@@ -4,7 +4,7 @@ Version: 1.0
 
 ## Author:
 
-Silviu Manolache ( [mdsdev.eu](http://mdsdev.eu/) / [Hire Me](https://www.freelancer.com/u/MDSilviu.html?action=hireme&track-hireme-textlink=1&track-type=textLink&ft_prog=HML&ft_prog_id=12011265) / [wordpress.org](https://profiles.wordpress.org/mdsilviu/) )
+Silviu Manolache ( [mdsdev.eu](http://mdsdev.eu/) / [freelancer.com](https://www.freelancer.com/u/MDSilviu.html?action=hireme&track-hireme-textlink=1&track-type=textLink&ft_prog=HML&ft_prog_id=12011265) / [wordpress.org](https://profiles.wordpress.org/mdsilviu/) )
 
 ## Summary
 
@@ -30,10 +30,6 @@ Theme includes:
 ### Bower
 
 Supports [bower](https://github.com/bower/bower) to install and manage JavaScript dependencies in the `assets/dev/js/plugins` folder.
-
-### Image Optimization
-
-To optimize images, run `grunt imagemin`. This was also included in the default `watch` task, but there are currently a few issues with processing images multiple times and removing their contents.
 
 ### Features
 
