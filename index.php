@@ -15,7 +15,6 @@ get_header(); ?>
 
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
-ccccdsadsa dsa assdsa sdd sa dsa da
             <?php
             if ( have_posts() ) :
                 if ( is_home() && ! is_front_page() ) : ?>

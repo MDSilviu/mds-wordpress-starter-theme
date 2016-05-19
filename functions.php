@@ -100,7 +100,7 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() .'/functions/customposts/custom-post-type.php';
 
 /**
- * Load custom metaboxe file.
+ * Load custom metabox file.
  */
 require get_template_directory() . '/functions/metaboxes/custom-post-type-metabox.php';
 
