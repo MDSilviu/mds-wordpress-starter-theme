@@ -5,7 +5,7 @@ var mainBowerFiles = require('main-bower-files');
 var $ = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('css', function() {
-    log('Generating .css file.');
+    log('Generating app .css file.');
     return gulp
         .src(config.appScss)
         .pipe($.plumber())
@@ -20,6 +20,7 @@ gulp.task('css', function() {
 });
 
 gulp.task('js', function() {
+    log('Generating app .js file.');
     return gulp
         .src(config.appjs)
         .pipe($.jscs())
@@ -68,6 +69,7 @@ gulp.task('js-plugins', function() {
 });
 
 gulp.task('img', function() {
+    log('Optimizing images.');
     return gulp
         .src(config.imgDev)
         .pipe($.newer(config.imgProdPath))
