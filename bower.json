@@ -1,0 +1,24 @@
+{
+  "name": "mds-wordpress-starter-theme",
+  "description": "A WordPress starter theme",
+  "main": "index.php",
+  "authors": [
+    "Silviu Manolache <info@mdsdev.eu>"
+  ],
+  "homepage": "http://mdsdev.eu",
+  "license": "MIT",
+  "keywords": [
+    "wordpress",
+    "starter",
+    "theme"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}

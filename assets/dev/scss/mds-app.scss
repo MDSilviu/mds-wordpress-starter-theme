@@ -1,0 +1,15 @@
+// Reset, Variables, Mixins, Plugins installed with bower
+// DO NOT EDIT ORDER OF FILES
+@import "partials/mixins";
+@import "partials/variables";
+@import "partials/normalize";
+@import "partials/plugins";
+
+/*! App styles */
+// Globals
+@import "partials/general";
+@import "partials/flexbox-grid";
+
+// Layout
+@import "partials/header";
+@import "partials/footer";

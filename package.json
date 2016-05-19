@@ -1,0 +1,41 @@
+{
+  "name": "mds-wordpress-starter-theme",
+  "version": "1.0.0",
+  "description": "A WordPress starter theme",
+  "main": "",
+  "scripts": {
+    "init": "npm install",
+    "install": "bower install"
+  },
+  "keywords": [
+    "wordpress",
+    "sterter",
+    "theme"
+  ],
+  "author": "Silviu Manolache <info@mdsdev.eu>",
+  "homepage": "http://mdsdev.eu",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-csso": "^2.0.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.1",
+    "gulp-load-plugins": "^1.2.2",
+    "gulp-merge-media-queries": "^0.2.1",
+    "gulp-newer": "^1.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-print": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "main-bower-files": "^2.13.0"
+  }
+}
