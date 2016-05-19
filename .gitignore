@@ -7,3 +7,4 @@ assets/dev/js/plugins/*
 assets/prod/css/*
 assets/prod/js/*
 assets/prod/img/*
+!.gitkeep

@@ -14,11 +14,11 @@ MDS WordPress Starter Theme for building custom themes. Uses Gulp, Bower, SCSS, 
 
 The theme is setup to use [Gulp](http://gulpjs.com/) to:
 
-- compile SCSS, run it through [AutoPrefixr](https://github.com/ai/autoprefixer) to prefix CSS for legacy browsers, [CSSO](https://github.com/css/csso) to minify and optimize.
+- compile SCSS, run it through [AutoPrefixer ](https://github.com/ai/autoprefixer) to prefix CSS for legacy browsers, [CSSO](https://github.com/css/csso) to minify and optimize.
 - analyze your JavaScript code for errors and coding standard with [JSHint](http://jshint.com/) and [JSCS](http://jscs.info/), concatenate and minify,
 - get your bower dependencies main files with [Main Bower Files](https://github.com/ck86/main-bower-files), concatenate and minify
 - optimize images
-- and automate browser reloading when changes are made to the files with [Browser Sync](https://www.browsersync.io/)
+- automate browser reloading when changes are made to the files with [Browser Sync](https://www.browsersync.io/)
 
 Rename folder to your theme name, change the `style.css` intro block to your theme information. Open the theme directory in terminal and run `npm install` to pull in all Gulp dependencies. Run `gulp` to execute tasks.
 
@@ -51,13 +51,13 @@ Anyone and everyone is welcome to contribute!
 
 ### Credits
 
-Without these projects, this WordPress Starter Theme wouldn't be where it is today.
+Without these projects, this WordPress Starter Theme wouldn't be where today.
 
 * [Underscores Theme](https://github.com/Automattic/_s)
 * [OptionTree](https://wordpress.org/plugins/option-tree/)
 * [TGM Plugin Activation](http://tgmpluginactivation.com/)
 * [Normalize.css](http://necolas.github.com/normalize.css)
 * [SASS / SCSS](http://sass-lang.com/)
-* [AutoPrefixr](https://github.com/ai/autoprefixer)
+* [AutoPrefixer](https://github.com/ai/autoprefixer)
 * [Gulp](http://gulpjs.com/)
 * [Bower](http://bower.io/)
