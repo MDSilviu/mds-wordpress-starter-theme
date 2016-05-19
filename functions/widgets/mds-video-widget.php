@@ -5,10 +5,10 @@ class MDS_Video_Widget extends WP_Widget {
 
         parent::__construct(
             'mds_video_widget',
-            __( 'MDS Video Widget', 'hantor' ),
+            __( 'MDS Video Widget', 'mds_starter_theme' ),
             array(
                 'classname'   => 'mds_video_widget',
-                'description' => __( 'Widget to display videos.', 'hantor' )
+                'description' => __( 'Widget to display videos.', 'mds_starter_theme' )
             )
         );
         

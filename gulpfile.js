@@ -76,6 +76,7 @@ gulp.task('img', function() {
 });
 //TODO:sprite task
 //TODO:create zip file with theme and strip all node modules, files etc task
+//TODO: task for fonts
 
 gulp.task('default', ['scss-plugins', 'js-plugins', 'css', 'js', 'img'], function () {
     gulp.watch( config.appScssAll, ['css']);
