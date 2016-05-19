@@ -79,7 +79,7 @@ gulp.task('img', function() {
 gulp.task('default', ['scss-plugins', 'js-plugins', 'css', 'js', 'img'], function () {
     gulp.watch( config.appScssAll, ['css']);
     gulp.watch( config.appjs, ['js']);
-    gulp.watch( config.imgDev, ['js']);
+    gulp.watch( config.imgDev, ['img']);
     startBrowserSync();
 });
 
