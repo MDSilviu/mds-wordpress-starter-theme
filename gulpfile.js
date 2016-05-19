@@ -94,7 +94,7 @@ function startBrowserSync() {
     }
     log('Starting browser-sync.');
     var options = {
-        proxy: 'localhost/wordpress47',
+        proxy: 'localhost/',
         port: 3000,
         files: [
             './assets/prod/**/*.*',
