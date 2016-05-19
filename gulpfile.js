@@ -68,7 +68,8 @@ gulp.task('js-plugins', function() {
 });
 
 gulp.task('img', function() {
-    return 	gulp.src(config.imgDev)
+    return gulp
+        .src(config.imgDev)
         .pipe($.newer(config.imgProdPath))
         .pipe($.imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
         .pipe(gulp.dest(config.imgProdPath));
