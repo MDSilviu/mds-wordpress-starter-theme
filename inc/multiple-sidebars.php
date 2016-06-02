@@ -60,11 +60,11 @@ class sidebar_generator {
 				$sidebar_class = sidebar_generator::name_to_class($sidebar);
 				register_sidebar(array(
 					'name'=>$sidebar,
-					'id' => 'avada-custom-sidebar-'.strtolower($sidebar_class),
-					'before_widget' => '<div id="%1$s" class="widget %2$s">',
-					'after_widget' => '</div>',
-					'before_title' => '<div class="heading"><h3>',
-					'after_title' => '</h3></div>',
+					'id' => 'mds-custom-sidebar-'.strtolower($sidebar_class),
+					'before_widget' => '<aside id="%1$s" class="mds-widget %2$s">',
+					'after_widget' => '</aside>',
+					'before_title' => '<h1 class="mds-widget-title">',
+					'after_title' => '</h1>',
 				));
 			}
 		}
