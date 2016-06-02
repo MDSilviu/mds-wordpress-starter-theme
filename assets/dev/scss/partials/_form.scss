@@ -1,0 +1,17 @@
+input:not([type=submit]),
+textarea,
+select {
+  &:focus {
+  }
+}
+
+button,
+input[type=submit],
+a.mds-button {
+
+  &:hover {
+  }
+  &:focus {
+
+  }
+}

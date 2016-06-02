@@ -1,0 +1,74 @@
+html {
+  box-sizing: border-box;
+  font-size: $mds-base-font-size;
+  line-height: $mds-base-line-height;
+  background-color: $mds-color-white;
+  color: $mds-color-black;
+  overflow-y: scroll;
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+}
+body {
+  @include mds-font-size(14px, $mds-base-line-height);
+}
+
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+a {
+  transition: color 0.2s ease;
+
+  &:hover {
+
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  margin: 0 0  10px
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
+h1 {
+  @include mds-font-size($mds-heading-size-1);
+}
+
+h2 {
+  @include mds-font-size($mds-heading-size-2);
+}
+
+h3 {
+  @include mds-font-size($mds-heading-size-3);
+}
+
+h4 {
+  @include mds-font-size($mds-heading-size-4);
+}
+
+h5 {
+  @include mds-font-size($mds-heading-size-5);
+}
+
+h6 {
+  @include mds-font-size($mds-heading-size-6);
+}
+
+
+

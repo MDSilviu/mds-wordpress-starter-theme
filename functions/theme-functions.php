@@ -144,12 +144,19 @@ function mds_mime_types($mimes) {
  * @return array
  */
 function mds_body_classes($classes) {
-    if ( is_multi_author() ) {
-        $classes[] = 'group-blog';
-    }
     if ( ! is_singular() ) {
-        $classes[] = 'hfeed';
+        $classes[] = '';
     }
     return $classes;
 }
 add_filter( 'body_class', 'mds_body_classes' );
+
+/**
+ * Remove width and height attribute from post thumbnail
+ */
+add_filter( 'post_thumbnail_html', 'mds_remove_thumbnail_dimensions', 10, 3 );
+function mds_remove_thumbnail_dimensions( $html, $post_id, $post_image_id ) {
+    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+
+    return $html;
+}

@@ -93,6 +93,11 @@ require get_template_directory() . '/inc/template-tags.php';
  */
 //require get_template_directory() . '/inc/multiple-sidebars.php';
 
+/**
+ * Load file for breadcrumbs.
+ */
+//require get_template_directory() . '/inc/breadcrumbs.php';
+
 
 /**
  * Load custom post type file

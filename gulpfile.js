@@ -4,13 +4,13 @@ var browserSync = require('browser-sync');
 var mainBowerFiles = require('main-bower-files');
 var $ = require('gulp-load-plugins')({lazy: true});
 
-gulp.task('css', function() {
+gulp.task('css',['scss-plugins'], function() {
     log('Generating app .css file.');
     return gulp
         .src(config.appScss)
         .pipe($.plumber())
-        .pipe($.sass())
-        .pipe($.autoprefixer({browsers: ['last 2 versions', '> 3%']}))
+        .pipe($.sass().on('error', $.sass.logError))
+        .pipe($.autoprefixer({browsers: ['last 2 versions', '> 2%', 'ie >= 10']}))
         .pipe($.print())
         .pipe($.mergeMediaQueries({log: true}))
         .pipe(gulp.dest(config.appProdCss))
@@ -23,12 +23,13 @@ gulp.task('js', function() {
     log('Generating app .js file.');
     return gulp
         .src(config.appjs)
+        .pipe($.plumber())
         .pipe($.jscs())
         .pipe($.jscs.reporter())
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
-        .pipe($.jshint.reporter('fail'))
-        .pipe($.jscs.reporter('fail'))
+        // .pipe($.jshint.reporter('fail'))
+        // .pipe($.jscs.reporter('fail'))
         .pipe($.print())
         .pipe($.concat('mds-app.js'))
         .pipe(gulp.dest(config.pluginsProdJs))
@@ -73,6 +74,7 @@ gulp.task('img', function() {
     return gulp
         .src(config.imgDev)
         .pipe($.newer(config.imgProdPath))
+        .pipe($.print())
         .pipe($.imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
         .pipe(gulp.dest(config.imgProdPath));
 });
@@ -80,10 +82,10 @@ gulp.task('img', function() {
 //TODO:create zip file with theme and strip all node modules, files etc task
 //TODO: task for fonts
 
-gulp.task('default', ['scss-plugins', 'js-plugins', 'css', 'js', 'img'], function () {
+gulp.task('default', ['js-plugins', 'css', 'js', 'img'], function () {
     gulp.watch( config.appScssAll, ['css']);
     gulp.watch( config.appjs, ['js']);
-    gulp.watch( config.imgDev, ['img']);
+    // gulp.watch( config.imgDevPath, ['img']);
     startBrowserSync();
 });
 
@@ -94,7 +96,7 @@ function startBrowserSync() {
     }
     log('Starting browser-sync.');
     var options = {
-        proxy: 'localhost/',
+        proxy: 'localhost/wordpress48',
         port: 3000,
         files: [
             './assets/prod/**/*.*',
