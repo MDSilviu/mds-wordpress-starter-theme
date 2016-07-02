@@ -19,25 +19,24 @@
 /**
  * Include the TGM_Plugin_Activation class.
  */
-require_once get_template_directory() . '/inc/class-tgm-plugin-activation.php';
+require_once get_template_directory() . '/includes/class-tgm-plugin-activation.php';
 
 add_action( 'tgmpa_register', 'mds_starter_theme_register_required_plugins' );
 
 function mds_starter_theme_register_required_plugins() {
-
-
+    
     $plugins = array(
         
-        array(
-            'name'               => 'Custom Post Order', // The plugin name.
-            'slug'               => 'intuitive-custom-post-order', // The plugin slug (typically the folder name).
-            'source'             => get_stylesheet_directory() . '/inc/plugins/intuitive-custom-post-order.zip', // The plugin source.
-            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
-            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-            'external_url'       => '', // If set, overrides default API URL and points to an external URL.
-        ),
+//        array(
+//            'name'               => 'Custom Post Order', // The plugin name.
+//            'slug'               => 'intuitive-custom-post-order', // The plugin slug (typically the folder name).
+//            'source'             => get_stylesheet_directory() . '/inc/plugins/intuitive-custom-post-order.zip', // The plugin source.
+//            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+//            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+//            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+//            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+//            'external_url'       => '', // If set, overrides default API URL and points to an external URL.
+//        ),
 //
 //        array(
 //            'name'               => 'Duplicate Posts', // The plugin name.

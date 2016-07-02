@@ -12,7 +12,7 @@ function mds_starter_theme_scripts() {
     /**
      * Include css for all pages
      */
-    wp_enqueue_style( 'mds-app-css', get_template_directory_uri() . '/assets/prod/css/mds-app.min.css', array(), '' );
+    wp_enqueue_style( 'mds-app-css', get_template_directory_uri() . '/assets/theme/css/mds-app.min.css', array(), '' );
     wp_enqueue_style( 'mds-custom-css', get_stylesheet_uri() );
     
     /**
@@ -21,8 +21,8 @@ function mds_starter_theme_scripts() {
     wp_deregister_script( 'jquery' );
     wp_enqueue_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), FALSE, '1.11.3', TRUE );
 
-    wp_enqueue_script( 'mds-plugins-js', get_template_directory_uri() . '/assets/prod/js/mds-plugins.min.js', array(), '', TRUE );
-    wp_enqueue_script( 'mds-theme-js', get_template_directory_uri() . '/assets/prod/js/mds-app.min.js', array(), '', TRUE );
+    wp_enqueue_script( 'mds-plugins-js', get_template_directory_uri() . '/assets/theme/js/mds-plugins.min.js', array(), '', TRUE );
+    wp_enqueue_script( 'mds-theme-js', get_template_directory_uri() . '/assets/theme/js/mds-app.min.js', array(), '', TRUE );
 
     
     /**

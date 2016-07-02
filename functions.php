@@ -19,7 +19,7 @@ add_filter( 'ot_theme_mode', '__return_true' );
 /**
  * Required: include Option Tree.
  */
-require get_template_directory() . '/admin/ot-loader.php' ;
+require get_template_directory() . '/includes/option-tree/ot-loader.php' ;
 
 /**
  * Load theme options file.
@@ -68,46 +68,45 @@ require get_template_directory() . '/functions/widgets.php';
 require get_template_directory() . '/functions/shortcode.php';
 
 /**
+ * Load file with custom template tags.
+ */
+require get_template_directory() . '/functions/template-tags.php';
+
+/**
  * Load the file for woocomerce compatibility  and functions
  */
 //require get_template_directory() . '/functions/woocommerce.php';
 
-
-/**
- * Load file with custom template tags.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
 /**
  * Load file for Jetpack plugin compatibility.
  */
-//require get_template_directory() . '/inc/jetpack.php';
+//require get_template_directory() . '/functions/jetpack.php';
 
 /**
  * Load file for the plugin to remove comments option from theme .
  */
-//require get_template_directory() . '/inc/remove-comments-absolute.php';
+//require get_template_directory() . '/includes/remove-comments-absolute.php';
 
 /**
  * Load file for the plugin to add multiple sidebars
  */
-//require get_template_directory() . '/inc/multiple-sidebars.php';
+//require get_template_directory() . '/includes/multiple-sidebars.php';
 
 /**
  * Load file for breadcrumbs.
  */
-//require get_template_directory() . '/inc/breadcrumbs.php';
+//require get_template_directory() . '/includes/breadcrumbs.php';
 
 
 /**
  * Load custom post type file
  */
-require get_template_directory() .'/functions/customposts/custom-post-type.php';
+require get_template_directory() .'/functions/custom-posts/custom-post-type.php';
 
 /**
  * Load custom metabox file.
  */
-require get_template_directory() . '/functions/metaboxes/custom-post-type-metabox.php';
+require get_template_directory() . '/functions/meta-boxes/custom-post-type-metabox.php';
 
 
 

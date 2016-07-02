@@ -1,14 +1,20 @@
 
 /*#adminmenuback {*/
-    /*position: absolute!important;*/
+/*position: absolute!important;*/
 /*}*/
 /*.sticky-menu #adminmenuwrap {*/
-    /*position: absolute!important;*/
+/*position: absolute!important;*/
 /*}*/
+
+div[id^='mds_']
+{
+    display:none;
+}
 
 .option-tree-ui-media-wrap img
 {
     max-height:200px!important;
+    background: #bababa!important;
 }
 .widefat .column-order_title {
     width: 25%!important;
