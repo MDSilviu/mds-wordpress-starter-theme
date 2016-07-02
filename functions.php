@@ -99,12 +99,17 @@ require get_template_directory() . '/functions/template-tags.php';
 
 
 /**
- * Load custom post type file
+ * Load custom post type files
  */
 require get_template_directory() .'/functions/custom-posts/custom-post-type.php';
 
 /**
- * Load custom metabox file.
+ * Load custom taxonomy files
+ */
+require get_template_directory() .'/functions/custom-taxonomies/custom-taxonomy.php';
+
+/**
+ * Load custom metabox files
  */
 require get_template_directory() . '/functions/meta-boxes/custom-post-type-metabox.php';
 
