@@ -29,7 +29,7 @@ Theme includes:
 
 ### Bower
 
-Supports [bower](https://github.com/bower/bower) to install and manage JavaScript dependencies in the `assets/dev/js/plugins` folder.
+Supports [bower](https://github.com/bower/bower) to install and manage JavaScript dependencies in the `.development/js/plugins` folder.
 
 ### Features
 
