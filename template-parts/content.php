@@ -19,7 +19,7 @@
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php mds_starter_theme_posted_on(); ?>
+			<?php mds_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
