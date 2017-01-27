@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.0
+Version: 3.0
 
 ## Author:
 
