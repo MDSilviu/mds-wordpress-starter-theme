@@ -37,7 +37,7 @@ Supports [bower](https://github.com/bower/bower) to install and manage JavaScrip
 2. Easy to customize
 3. Media Queries can be nested in each selector using SASS
 4. Gulp for processing all SASS, JavaScript and images
-5. Add custom theme options and metaboxes with OptionTree
+5. Add custom theme options and metaboxes with Carbon Fields
 6. Set theme plugin dependencies with TGM Plugin Activation
 7. Common used WordPress functions
 8. Basic markup and css styles
