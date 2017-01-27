@@ -23,7 +23,7 @@ The theme is setup to use [Gulp](http://gulpjs.com/) to:
 Rename folder to your theme name, change the `style.css` intro block to your theme information. Open the theme directory in terminal and run `npm install` to pull in all Gulp dependencies. Run `gulp` to execute tasks.
 
 Theme includes:
-- [OptionTree](https://wordpress.org/plugins/option-tree/) to create custom theme options and metaboxes
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields/) to create custom theme options and metaboxes
 - [TGM Plugin Activation](http://tgmpluginactivation.com/) to be able to easy include your theme plugin dependencies
 - basic functions to use in your theme development located in the "functions" directory
 
@@ -40,6 +40,7 @@ Supports [bower](https://github.com/bower/bower) to install and manage JavaScrip
 5. Add custom theme options and metaboxes with OptionTree
 6. Set theme plugin dependencies with TGM Plugin Activation
 7. Common used WordPress functions
+8. Basic markup and css styles
 
 ### Contributing:
 
@@ -54,10 +55,12 @@ Anyone and everyone is welcome to contribute!
 Without these projects, this WordPress Starter Theme wouldn't be where today.
 
 * [Underscores Theme](https://github.com/Automattic/_s)
-* [OptionTree](https://wordpress.org/plugins/option-tree/)
+* [Carbon Fields](https://github.com/htmlburger/carbon-fields)
 * [TGM Plugin Activation](http://tgmpluginactivation.com/)
 * [Normalize.css](http://necolas.github.com/normalize.css)
 * [SASS / SCSS](http://sass-lang.com/)
 * [AutoPrefixer](https://github.com/ai/autoprefixer)
 * [Gulp](http://gulpjs.com/)
 * [Bower](http://bower.io/)
+
+* (Retired) [OptionTree](https://wordpress.org/plugins/option-tree/)

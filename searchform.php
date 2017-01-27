@@ -1,4 +1,4 @@
-<form role="search" class="searchform" method="get" action="<?php echo home_url( '/' ); ?>">
+<form role="search" class="mds-search-form" method="get" action="<?php echo home_url( '/' ); ?>">
 	<div class="search-table">
 		<div class="search-field">
 			<input type="text" value="" name="s" class="s" placeholder="<?php echo __( 'Search ', 'hantor' ); ?>" />

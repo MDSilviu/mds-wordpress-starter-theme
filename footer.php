@@ -8,13 +8,26 @@
  */
 ?>
 
-    <footer>
-        <p>&copy; <?php echo date('Y'); ?>  MDSDev.eu </p>
-    </footer><!-- end .footer -->
+        </main>
+        <!-- /.mds-main -->
+
+        <footer class="mds-footer">
+            &copy; <?php echo date('Y'); ?>
+            <?php echo carbon_get_theme_option('footer_copyright'); ?>
+
+            <a href="" target="_blank">
+                <i class="mds-icon mds-*-icon">
+                    <svg class="mds-svg-icon"><use xlink:href="<?php echo mds_get_icons_file_uri().'#icon-*';?>"></use></svg>
+                </i>
+                <!-- /.mds-icon -->
+            </a>
+        </footer>
+        <!-- /.mds-footer -->
+
+    </div>
+    <!-- /.mds-body-wrapper -->
 
     <?php wp_footer(); ?>
-    <!--[if lt IE 7]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+
     </body>
 </html>

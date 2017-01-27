@@ -20,3 +20,19 @@
 //        'resize' => __( 'Resize' ),
 //    ) );
 //}
+
+
+/**
+ *
+ * Remove default image sizes
+ * @param $sizes
+ * @return mixed
+ */
+//add_filter('intermediate_image_sizes_advanced', 'mds_remove_default_image_sizes');
+//function mds_remove_default_image_sizes($sizes) {
+//    unset($sizes['medium']);
+//    unset($sizes['medium_large']);
+//    unset($sizes['large']);
+//
+//    return $sizes;
+//}

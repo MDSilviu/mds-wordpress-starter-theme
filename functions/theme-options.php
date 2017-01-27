@@ -1,42 +1,15 @@
 <?php
-/**
- * File with the theme custom options.
- * Replace this file with the one exported from Option Tree settings builder
- */
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
 
-/**
- * Initialize the custom theme options.
- */
-add_action('init', 'custom_theme_options');
 
-/**
- * Build the custom settings & update OptionTree.
- */
-function custom_theme_options() {
-    /* OptionTree is not loaded yet, or this is not an admin request */
-    if (!function_exists('ot_settings_id') || !is_admin())
-        return false;
+Container::make('theme_options', __('Theme Options', 'mds_starter_theme'))
+    ->set_page_parent('themes.php')
+    ->add_tab(__('Header', 'mds_starter_theme'), array(
+        Field::make('image', 'header_logo', 'Logo')->set_value_type('url'),
 
-    /**
-     * Get a copy of the saved settings array.
-     */
-    $saved_settings = get_option(ot_settings_id(), array());
+    ))
+    ->add_tab(__('Footer', 'mds_starter_theme'), array(
+        Field::make('textarea', 'footer_copyright', 'Copyright Text'),
 
-    /**
-     * Custom settings array that will eventually be
-     * passes to the OptionTree Settings API Class.
-     */
-    $custom_settings = array();
-
-    /* allow settings to be filtered before saving */
-    $custom_settings = apply_filters(ot_settings_id() . '_args', $custom_settings);
-
-    /* settings are not the same update the DB */
-    if ($saved_settings !== $custom_settings) {
-        update_option(ot_settings_id(), $custom_settings);
-    }
-
-    /* Lets OptionTree know the UI Builder is being overridden */
-    global $ot_has_custom_theme_options;
-    $ot_has_custom_theme_options = true;
-}
+    ));

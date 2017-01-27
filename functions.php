@@ -6,31 +6,15 @@
  */
 
 /**
- * Set Option Tree in theme mode.
- * Needed when it's included in the theme and not as a plugin
+ * Include Carbon Fields file
  */
-add_filter( 'ot_theme_mode', '__return_true' );
-
-/**
- * Disable Option Tree admin settings builder
- * Uncomment when theme is ready for production
- */
-//add_filter( 'ot_show_pages', '__return_false' );
-/**
- * Required: include Option Tree.
- */
-require get_template_directory() . '/includes/option-tree/ot-loader.php' ;
+require get_template_directory() . '/includes/carbon-fields/carbon-fields-plugin.php' ;
 
 /**
  * Load theme options file.
  * Export theme options as a file and include it in the theme.
  */
-//require(get_template_directory()  . '/functions/theme-options.php' );
-
-/**
- * Load file with custom Option Tree types
- */
-//require(get_template_directory()  . '/functions/ot-custom-types.php' );
+require(get_template_directory()  . '/functions/theme-options.php' );
 
 /**
  * Load the file with filters and functions to disable/remove some feature for WordPress
@@ -68,19 +52,9 @@ require get_template_directory() . '/functions/widgets.php';
 require get_template_directory() . '/functions/shortcode.php';
 
 /**
- * Load file with custom template tags.
- */
-require get_template_directory() . '/functions/template-tags.php';
-
-/**
  * Load the file for woocomerce compatibility  and functions
  */
 //require get_template_directory() . '/functions/woocommerce.php';
-
-/**
- * Load file for Jetpack plugin compatibility.
- */
-//require get_template_directory() . '/functions/jetpack.php';
 
 /**
  * Load file for the plugin to remove comments option from theme .
@@ -101,17 +75,17 @@ require get_template_directory() . '/functions/template-tags.php';
 /**
  * Load custom post type files
  */
-require get_template_directory() .'/functions/custom-posts/custom-post-type.php';
+//require get_template_directory() .'/functions/custom-posts/custom-post-type.php';
 
 /**
  * Load custom taxonomy files
  */
-require get_template_directory() .'/functions/custom-taxonomies/custom-taxonomy.php';
+//require get_template_directory() .'/functions/custom-taxonomies/custom-taxonomy.php';
 
 /**
  * Load custom metabox files
  */
-require get_template_directory() . '/functions/meta-boxes/custom-post-type-metabox.php';
+require get_template_directory() . '/functions/carbon-custom-fields.php';
 
 
 

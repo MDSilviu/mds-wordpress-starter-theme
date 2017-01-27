@@ -1,4 +1,12 @@
 # Changelog
+
+## Version 3.0
+
+* Change custom fields to Carbon Fields
+* Added basic markup
+* Added basic styles
+* Added common js plugins (svgforeverybody, openshare)
+
 ## Version 2.0
 
 * refactored code

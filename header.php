@@ -18,24 +18,40 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-    <header>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" title="mds_starter_theme">
-            <img src="" alt="mds_starter_theme">
-        </a>
-        <div class="nav-wrap">
-            <nav class="menu">
-                <ul>
-                    <?php
-                    if ( has_nav_menu( 'primary' ) ) {
-                        wp_nav_menu(array('theme_location' => 'primary', 'depth' => 2, 'container' => false,  'items_wrap' => '%3$s'));
-                    }
-                    else
-                    {
-                        echo "Create a menu and assign it to Primary location";
-                    }
-                    ?>
-                </ul>
-            </nav><!-- end .menu -->
+
+<div class="mds-body-wrapper">
+
+    <header class="mds-header">
+
+        <div class="mds-logo">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="mds_starter_theme">
+                <img src="<?php echo carbon_get_theme_option('header_logo'); ?>" alt="mds_starter_theme">
+            </a>
         </div>
-    </header><!-- end .header -->
+        <!-- /.mds-logo -->
+
+        <nav class="mds-main-nav">
+            <div class="mds-hamburger-wrapper">
+                <div class="mds-hamburger"></div>
+                <!-- /.mds-hamburger -->
+            </div>
+            <!-- /.mds-hamburger-wrapper -->
+
+            <ul class="mds-custom-list mds-main-menu">
+                <?php if (has_nav_menu('primary')) {
+                    wp_nav_menu(array(
+                        'theme_location' => 'primary',
+                        'depth' => 1,
+                        'container' => false,
+                        'items_wrap' => '%3$s'
+                    ));
+                } ?>
+            </ul>
+        </nav>
+        <!-- /.mds-main-nav -->
+
+    </header>
+    <!-- /.mds-header -->
+    <main class="mds-main">
+
 
