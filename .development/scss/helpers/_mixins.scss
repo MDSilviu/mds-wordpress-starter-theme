@@ -1,20 +1,25 @@
 /*----------------------
 Responsive breakpoints
 -----------------------*/
-@mixin breakpoint ($value) {
+@mixin mds-breakpoint ($value, $min-value: false) {
   @if $value == 'phone' {
-    @media only screen and (min-width : 320px) and (max-width : 767px) { @content; }
+    @media only screen and (max-width : 360px) { @content; }
   }
-  @if $value == 'phone-large' {
-    @media only screen and (min-width : 460px) and (max-width : 767px) { @content; }
+
+  @else if $value == 'tablet-only' {
+    @media only screen and (min-width: 724px) and (max-width: 1024px) { @content; }
   }
 
   @else if $value == 'tablet' {
-    @media only screen and (min-width: 768px) and (max-width: 1279px) { @content; }
+    @media only screen and (min-width: 724px) { @content; }
   }
 
   @else if $value == 'desktop' {
-    @media only screen and (min-width: 1280px) { @content }
+    @media only screen and (min-width: 1025px) { @content }
+  }
+
+  @else if($min-value) {
+    @media only screen and (min-width: $min-value) and (max-width: $value) { @content; }
   }
 
   @else {
@@ -26,15 +31,12 @@ Responsive breakpoints
 /*----------------------
 Rem font unit with px fallback and optional line height
 -----------------------*/
-@function parseVal($n) {
-  @return $n / ($n * 0 + 1);
-}
 @mixin mds-font-size($font-size, $line-height: false) {
 
-  font-size: $font-size;
   font-size: (parseVal($font-size) / 10) * 1rem;
 
   @if $line-height {
     line-height: $line-height;
   }
 }
+

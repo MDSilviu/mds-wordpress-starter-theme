@@ -1,16 +1,30 @@
-// Reset, Variables, Mixins, Plugins installed with bower
-// DO NOT EDIT ORDER OF FILES
-@import "partials/mixins";
-@import "partials/variables";
-@import "partials/normalize";
-@import "partials/plugins";
+//Helpers
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
 
-/*! App styles */
-// Globals
-@import "partials/general";
-@import "partials/form";
-@import "partials/flexbox-grid";
+//base
+@import "base/font";
+@import "base/normalize";
+@import "base/animation";
+@import "base/general";
+@import "base/form";
+
+//elements
+@import "elements/icons";
+@import "elements/loader";
+@import "elements/body-container";
+@import "elements/container";
+@import "elements/hamburger";
+@import "elements/menu";
 
 // Layout
-@import "partials/header";
-@import "partials/footer";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/main";
+
+
+//Pages
+
+
+

@@ -1,0 +1,93 @@
+input::placeholder,
+::placeholder {
+}
+
+input:not([type=submit]) {
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+input[type=submit],
+button,
+.mds-button {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+//remove ie clear button from input
+::-ms-clear {
+  display: none;
+}
+
+textarea {
+
+}
+
+select {
+  appearance: none;
+  cursor: pointer;
+}
+
+//remove ie select arrow
+select::-ms-expand {
+  display: none;
+}
+
+//fix ie selected value color and background
+select:focus::-ms-value {
+  background-color: transparent;
+  color: inherit;
+}
+
+//remove mozzila dotted line on focus
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+.mds-select {
+  position: relative;
+
+  select {
+
+  }
+
+  &:before {
+    pointer-events: none;
+  }
+
+}
+
+.mds-checkbox {
+  label {
+    display: block;
+    cursor: pointer;
+
+    span {
+      vertical-align: bottom;
+    }
+  }
+
+  input {
+    vertical-align: bottom;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+}
+
+.mds-button {
+  &:hover {
+
+    opacity: 0.8;
+  }
+
+}
+
+
+

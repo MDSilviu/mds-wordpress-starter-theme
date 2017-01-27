@@ -58,6 +58,8 @@
   "globals": {
     "Backbone": true,
     "_": true,
-    "jQuery": true
+    "jQuery": true,
+    "svg4everybody": true,
+    "Swiper": true
   }
 }

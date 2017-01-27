@@ -1,69 +1,61 @@
 var gulp = require('gulp');
 var config = require('./gulp.config')();
+var fs = require('fs');
+var path = require('path');
+var merge2 = require('merge2');
 var browserSync = require('browser-sync');
-var mainBowerFiles = require('main-bower-files');
 var $ = require('gulp-load-plugins')({lazy: true});
 
-gulp.task('css',['scss-plugins'], function() {
-    log('Generating app .css file.');
+gulp.task('css-app', function() {
+    log('Generating app .css files.');
     return gulp
-        .src(config.devFilesScssMain)
+        .src(config.devFilesScssAppMain)
         .pipe($.plumber())
         .pipe($.sass().on('error', $.sass.logError))
+        .pipe($.sassUnicode())
         .pipe($.autoprefixer({browsers: config.autoprefixerBrowserVersion}))
         .pipe($.print())
         .pipe($.mergeMediaQueries({log: true}))
-        .pipe(gulp.dest(config.themePathCss))
+        .pipe(gulp.dest(config.themePathAppCss))
         .pipe($.csso())
         .pipe($.rename({suffix: '.min'}))
-        .pipe(gulp.dest(config.themePathCss))
+        .pipe(gulp.dest(config.themePathAppCss))
 });
 
-gulp.task('js', function() {
+gulp.task('js-app', function() {
     log('Generating app .js file.');
-    return gulp
-        .src(config.devFilesJs)
-        .pipe($.plumber())
-        .pipe($.jscs())
-        .pipe($.jscs.reporter())
-        .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
-        .pipe($.print())
-        .pipe($.concat('mds-app.js'))
-        .pipe(gulp.dest(config.themePathJs))
+
+    return merge2(
+        gulp.src(config.devFilesPluginsJs)
+            .pipe($.plumber())
+            .pipe($.print())
+            .pipe(gulp.dest(config.themePathPluginsJs)),
+        gulp.src(config.devFilesAppJs)
+            .pipe($.plumber())
+            .pipe($.jscs())
+            .pipe($.jscs.reporter())
+            .pipe($.jshint())
+            .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
+            .pipe($.print())
+            .pipe(gulp.dest(config.themePathAppJs))
+        )
+        .pipe($.concat('mds-theme.js'))
+        .pipe(gulp.dest(config.themePathAppJs))
         .pipe($.uglify({preserveComments: "license"}))
         .pipe($.rename({suffix: '.min'}))
-        .pipe(gulp.dest(config.themePathJs))
+        .pipe(gulp.dest(config.themePathAppJs))
 });
 
-gulp.task('scss-plugins', function() {
-    log('Generating plugins .scss file.');
-    return gulp
-        .src(mainBowerFiles({
-            paths: config.bower
-        }))
-        .pipe($.plumber())
-        .pipe($.filter('**/*.css'))
-        .pipe($.print())
-        .pipe($.concat('_plugins.scss'))
-        .pipe(gulp.dest(config.devPathScssPartials));
-});
+gulp.task('js-app-singles', function() {
+    log('Generating app .js single files.');
 
-gulp.task('js-plugins', function() {
-    log('Generating plugins .js file.');
-    return gulp
-        .src(mainBowerFiles({
-            paths: config.bower
-        }))
+    return gulp.src(config.devFilesNotMergedJs)
         .pipe($.plumber())
-        .pipe($.filter('**/*.js'))
         .pipe($.print())
-        .pipe($.concat('mds-plugins.js'))
-        .pipe(gulp.dest(config.themePathJs))
         .pipe($.uglify({preserveComments: "license"}))
-        .pipe($.rename({ suffix: '.min' }))
-        .pipe(gulp.dest(config.themePathJs))
+        .pipe(gulp.dest(config.themePathPluginsJs))
 });
+
 
 gulp.task('optimize-img', function() {
     log('Optimizing images.');
@@ -74,17 +66,40 @@ gulp.task('optimize-img', function() {
         .pipe($.imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
         .pipe(gulp.dest(config.themePathImg));
 });
-//TODO:sprite task
-//TODO:create zip file with theme and strip all node modules, files etc task
-//TODO: task for fonts
 
-gulp.task('default', ['js-plugins', 'css', 'js', 'optimize-img'], function () {
-    gulp.watch(config.devFilesJs, ['js']);
-    $.watch(config.devFilesScssAll, function() {
-        gulp.start('css');
+gulp.task('font-app', function() {
+    log('Copying fonts.');
+    return gulp.src(config.devFilesFont)
+        .pipe(gulp.dest(config.themePathFont));
+});
+
+gulp.task('svg-sprite', function () {
+    return gulp
+        .src(config.devFilesSvgIcons)
+        .pipe($.svgmin())
+        .pipe($.svgstore())
+        .pipe(gulp.dest(config.themePathImg));
+});
+
+gulp.task('default', ['css-app', 'js-app', 'js-app-singles', 'optimize-img', 'font-app'], function () {
+    $.watch(config.devFilesScssAppAll, function() {
+        gulp.start('css-app');
     });
+
+    $.watch(config.devFilesJs, function() {
+        gulp.start('js-app');
+    });
+
+    $.watch(config.devFilesNotMergedJs, function() {
+        gulp.start('js-app-singles');
+    });
+
     $.watch(config.devFilesImg, function() {
         gulp.start('optimize-img');
+    });
+
+    $.watch(config.devFilesFont, function() {
+        gulp.start('font-app');
     });
 
     startBrowserSync();
@@ -99,6 +114,7 @@ function startBrowserSync() {
     log('Starting browser-sync.');
     var options = {
         proxy: config.browserSyncProxy,
+        baseDir: "../",
         port: 3000,
         files: config.browserSyncFiles,
         injectChanges: true,
@@ -118,4 +134,12 @@ function log(msg) {
     } else {
         $.util.log($.util.colors.cyan(msg));
     }
+}
+
+
+function getFolders(dir) {
+    return fs.readdirSync(dir)
+        .filter(function(file) {
+            return fs.statSync(path.join(dir, file)).isDirectory();
+        });
 }

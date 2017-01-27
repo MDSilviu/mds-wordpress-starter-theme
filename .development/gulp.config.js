@@ -4,29 +4,41 @@ module.exports = function() {
     
     return config = {
         //dev
-        devFilesScssMain: './scss/*.scss',
-        devFilesScssAll: './scss/**/*.scss',
-        devFilesJs: './js/app/**/*.js',
-        devFilesImg: './img/**/*.{png,jpg,gif}',
-        devPathScssPartials: './scss/partials',
-        
+        devFilesScssAppMain: './scss/*.scss',
+        devFilesScssAppAll: './scss/**/*.scss',
+        devFilesAppJs: './js/app/**/*.js',
+        devFilesPluginsJs: './js/plugins/**/*.js',
+        devFilesNotMergedJs: './js/not-merged/**/*.js',
+        devFilesJs: './js/**/*.js',
+        devPathPluginsJs: './js/plugins',
+        devPathNotMergedJs: './js/not-merged',
+        devFilesFont: './font/**/*',
+
+        //png icons
+        devFilesImg: './img/**/*.{png,jpg,gif,svg}',
+        devFilesIcons: './icon/*.png',
+
+        //svg icons
+        devFilesSvgIcons: './icons/*.svg',
+
+        svgTemplateName: 'sprite-template.scss',
+        svgSpriteScssName: '_sprite.scss',
+        svgSpriteFileName: 'icons-sprite.svg',
+
         //theme
         themePath: themePath,
-        themePathCss: themePath + 'css/',
-        themePathJs: themePath + 'js/',
+        themePathAppCss: themePath + 'css',
+        themePathAppJs: themePath + 'js',
+        themePathPluginsJs: themePath + 'js/plugins',
         themePathImg: themePath + 'img/',
+        themePathFont: themePath + 'font/',
 
         //misc
         autoprefixerBrowserVersion: [
             'last 2 versions',
-            '> 2%', 
-            'ie >= 10'
+            '> 2%'
         ],
-        bower: {
-            bowerDirectory: './js/plugins',
-            bowerrc: './.bowerrc',
-            bowerJson: './bower.json'
-        },
+
         browserSyncFiles: [
             '../assets/**/*.*',
             '../*.php',
@@ -34,8 +46,7 @@ module.exports = function() {
             '../page-templates/**/*.php',
             '../template-parts/**/*.php'
         ],
-        browserSyncProxy: 'localhost/'
+        browserSyncProxy: 'localhost/wordpress*',
 
-        
     };
 };

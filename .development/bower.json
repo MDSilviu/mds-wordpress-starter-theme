@@ -19,6 +19,8 @@
     "test",
     "tests"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "svg4everybody": "^2.1.3"
+  },
   "devDependencies": {}
 }

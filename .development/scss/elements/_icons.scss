@@ -1,0 +1,24 @@
+
+.mds-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  & > svg {
+    fill: currentColor;
+  }
+}
+
+//.mds-*-icon {
+//  color: $mds-color-white;
+//
+//
+//  .mds-* {
+//    width: 16px;
+//    height: 20px;
+//  }
+//}

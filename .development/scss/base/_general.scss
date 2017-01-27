@@ -1,19 +1,21 @@
 html {
   box-sizing: border-box;
   font-size: $mds-base-font-size;
-  line-height: $mds-base-line-height;
-  background-color: $mds-color-white;
-  color: $mds-color-black;
-  overflow-y: scroll;
-  min-height: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 
 }
 body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  font-family: $mds-base-font-open-sans;
+  color: $mds-color-black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
   @include mds-font-size(14px, $mds-base-line-height);
 }
 
@@ -26,10 +28,15 @@ body {
 }
 
 a {
-  transition: color 0.2s ease;
+  text-decoration: none;
+  //transition: color 0.2s ease;
 
   &:hover {
 
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 
@@ -40,6 +47,25 @@ img {
 
 p {
   margin: 0 0  10px
+}
+
+ul:not(.mds-custom-list) {
+  margin: 0;
+  padding: 0;
+
+  li {
+
+  }
+}
+
+.mds-custom-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -69,6 +95,3 @@ h5 {
 h6 {
   @include mds-font-size($mds-heading-size-6);
 }
-
-
-

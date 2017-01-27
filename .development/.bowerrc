@@ -1,5 +1,5 @@
 {
-    "directory": "./js/plugins",
+    "directory": "bower_components",
     "scripts": {
     }
 }

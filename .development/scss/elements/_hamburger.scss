@@ -1,0 +1,51 @@
+.mds-hamburger-wrapper {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.mds-hamburger {
+  width: 100%;
+  height: 2px;
+  background-color: $mds-color-white;
+  display: block;
+  position: relative;
+  transition: background-color 0.15s ease-in;
+
+  .mds-menu-open & {
+    background-color: transparent;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    display: block;
+    background-color: $mds-color-white;
+    left: 0;
+    transition: top 0.3s ease-in, transform 0.3s ease-in;
+  }
+
+  &:before {
+    top: -9px;
+
+    .mds-menu-open & {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &:after {
+    top: calc(100% + 7px);
+
+    .mds-menu-open & {
+      top: 0;
+      transform: rotate(45deg);
+    }
+  }
+}
