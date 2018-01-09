@@ -1,24 +1,25 @@
-
-.mds-icon {
-  display: inline-flex;
+.cc-icon-inline,
+.cc-icon {
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-style: normal;
   font-weight: normal;
   line-height: 1;
+  user-select: none;
 
   & > svg {
     fill: currentColor;
+    width: 1em;
+    height: 1em;
   }
 }
 
-//.mds-*-icon {
-//  color: $mds-color-white;
-//
-//
-//  .mds-* {
-//    width: 16px;
-//    height: 20px;
-//  }
-//}
+.cc-icon {
+  display: flex;
+}
+
+.cc-icon-inline {
+  display: inline-flex;
+}
+

@@ -1,0 +1,51 @@
+.mds-pagination {
+  &__list {
+    display: flex;
+    justify-content: center;
+
+    li {
+      padding: 0 7px;
+
+      a {
+        display: block;
+        padding: 5px;
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -4px;
+          width: 100%;
+          border-bottom: 2px solid black;
+          transform: scaleX(0);
+          transform-origin: left center;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover {
+          &:before {
+            transform: scaleX(1);
+          }
+        }
+      }
+
+      span {
+        display: block;
+        padding: 5px;
+        position: relative;
+
+        &.current {
+          &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            border-bottom: 2px solid black;
+          }
+        }
+      }
+    }
+  }
+}

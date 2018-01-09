@@ -9,9 +9,11 @@ module.exports = function() {
         devFilesAppJs: './js/app/**/*.js',
         devFilesPluginsJs: './js/plugins/**/*.js',
         devFilesNotMergedJs: './js/not-merged/**/*.js',
+        devFilesGroupedMergedJs: './js/group-merged/**/*.js',
         devFilesJs: './js/**/*.js',
         devPathPluginsJs: './js/plugins',
         devPathNotMergedJs: './js/not-merged',
+        devPathGroupedMergedJs: './js/group-merged',
         devFilesFont: './font/**/*',
 
         //png icons
@@ -44,9 +46,10 @@ module.exports = function() {
             '../*.php',
             '../functions/**/*.php',
             '../page-templates/**/*.php',
-            '../template-parts/**/*.php'
+            '../template-parts/**/*.php',
+            '../woocommerce/**/*.php'
         ],
-        browserSyncProxy: 'localhost/wordpress*',
+        browserSyncProxy: 'localhost/wordpress',
 
     };
 };

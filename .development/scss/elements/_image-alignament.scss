@@ -1,0 +1,41 @@
+.alignleft {
+
+  @include mds-breakpoint('phone') {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  @include mds-breakpoint('from-tablet') {
+    display: inline;
+    float: left;
+    margin: 15px 15px 15px 0;
+  }
+
+}
+
+.alignright {
+  @include mds-breakpoint('phone') {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  @include mds-breakpoint('from-tablet') {
+    display: inline;
+    float: right;
+    margin: 15px 0 15px 15px;
+  }
+}
+
+.aligncenter {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

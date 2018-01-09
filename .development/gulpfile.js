@@ -56,6 +56,35 @@ gulp.task('js-app-singles', function() {
         .pipe(gulp.dest(config.themePathPluginsJs))
 });
 
+gulp.task('js-app-grouped', function() {
+    log('Generating app .js single files.');
+
+    var folders = getFolders(config.devPathGroupedMergedJs);
+
+    folders.map(function(folder) {
+        return merge2(
+            gulp.src(path.join(config.devPathGroupedMergedJs, folder, '/plugins/*.js'))
+                .pipe($.plumber())
+                .pipe($.print())
+                .pipe(gulp.dest(config.themePathPluginsJs + '/' + folder)),
+            gulp.src(path.join(config.devPathGroupedMergedJs, folder, '/*.js'))
+                .pipe($.plumber())
+                .pipe($.jscs())
+                .pipe($.jscs.reporter())
+                .pipe($.jshint())
+                .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
+                .pipe($.print())
+                .pipe(gulp.dest(config.themePathAppJs))
+            )
+            .pipe($.concat(folder + '.js'))
+            .pipe(gulp.dest(config.themePathAppJs))
+            .pipe($.uglify({preserveComments: "license"}))
+            .pipe($.rename({suffix: '.min'}))
+            .pipe(gulp.dest(config.themePathAppJs));
+
+    });
+});
+
 
 gulp.task('optimize-img', function() {
     log('Optimizing images.');
@@ -92,6 +121,10 @@ gulp.task('default', ['css-app', 'js-app', 'js-app-singles', 'optimize-img', 'fo
 
     $.watch(config.devFilesNotMergedJs, function() {
         gulp.start('js-app-singles');
+    });
+
+    $.watch(config.devFilesGroupedMergedJs, function() {
+        gulp.start('js-app-grouped');
     });
 
     $.watch(config.devFilesImg, function() {

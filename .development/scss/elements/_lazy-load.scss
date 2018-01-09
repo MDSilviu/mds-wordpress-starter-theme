@@ -1,0 +1,43 @@
+.mds-img-wrapper {
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    margin-left: -20px;
+    margin-top: -20px;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 100%;
+    animation: mds-scale-out 1.0s infinite $animation-standard-curve;
+  }
+}
+
+img.mds-lazy {
+  opacity: 0;
+  transition: opacity 0.3s $animation-standard-curve;
+  position: relative;
+  z-index: 1;
+
+  &.mds-img-loaded {
+    opacity: 1;
+
+  }
+}
+
+.mds-lazy-bg {
+  opacity: 0;
+  transition: opacity 0.3s $animation-standard-curve;
+
+  &.mds-img-loaded {
+    opacity: 1;
+  }
+}
+
+
+

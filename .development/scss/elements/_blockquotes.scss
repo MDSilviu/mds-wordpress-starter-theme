@@ -1,0 +1,16 @@
+blockquote {
+  //background: ;
+  //border-left: 4px solid ;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  p {
+    margin: 0;
+  }
+
+  @include mds-breakpoint('phone') {
+    margin-left:15px;
+    margin-right: 15px;
+  }
+}

@@ -1,28 +1,51 @@
-//Helpers
-@import "helpers/variables";
-@import "helpers/functions";
-@import "helpers/mixins";
+//helpers
+@import "_helpers/variables";
+@import "_helpers/functions";
+@import "_helpers/mixins";
 
 //base
 @import "base/font";
 @import "base/normalize";
 @import "base/animation";
 @import "base/general";
-@import "base/form";
+
+//form
+@import "form/form-helpers";
+@import "form/text";
+@import "form/textarea";
+@import "form/select";
+@import "form/radio";
+@import "form/checkbox";
+@import "form/button";
 
 //elements
-@import "elements/icons";
-@import "elements/loader";
-@import "elements/body-container";
+@import "elements/blockquotes";
+//@import "elements/comments";
 @import "elements/container";
 @import "elements/hamburger";
-@import "elements/menu";
+@import "elements/icons";
+@import "elements/image-alignament";
+@import "elements/lazy-load";
+@import "elements/loader";
+@import "elements/object-fit";
+@import "elements/pagination";
 
-// Layout
-@import "layout/header";
-@import "layout/footer";
-@import "layout/main";
 
+
+//plugins
+//@import "plugins/swiper";
+//@import "plugins/contact-form-7";
+
+//Layout
+@import "layout/header/header";
+@import "layout/header/menu";
+
+@import "layout/footer/footer";
+
+@import "layout/main/main";
+
+//widgets
+//@import "widgets/widgets";
 
 //Pages
 
