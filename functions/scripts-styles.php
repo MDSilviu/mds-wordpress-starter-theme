@@ -19,22 +19,28 @@ function mds_scripts() {
      * Remove jquery from wp_header and include in wp_footer
      */
     wp_deregister_script( 'jquery' );
-    wp_enqueue_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), FALSE, '1.12.4', TRUE );
+	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/theme/js/plugins/jquery.min.js', FALSE, '3.2.1', TRUE );
 
-    wp_enqueue_script( 'mds-theme-js', get_template_directory_uri() . '/assets/theme/js/mds-theme.min.js', array(), '1.0', TRUE );
+	wp_enqueue_script( 'mds-theme-js', get_template_directory_uri() . '/assets/theme/js/mds-theme.min.js', array('jquery'), '1.0', TRUE );
 
+	/**
+	 * Include social share script
+	 */
+//	if (is_singular(array('post','project'))) {
+//		wp_enqueue_script( 'openshare', get_template_directory_uri() . '/assets/theme/js/plugins/openshare.min.js', array(), '', TRUE );
+//	}
 
-//    /**
-//     * Add scripts attributes
-//     */
-//    add_filter('script_loader_tag', 'mds_add_script_attributes', 10, 2);
-//    function mds_add_script_attributes($tag, $handle) {
-//        if ('script-name' !== $handle) {
-//            return $tag;
-//        }
-//
-//        return str_replace(' src', ' defer="defer" src', $tag);
-//    }
+	/**
+	 * Add scripts attributes
+	 */
+	add_filter('script_loader_tag', 'mds_add_script_attributes', 10, 2);
+	function mds_add_script_attributes($tag, $handle) {
+		if ('openshare' === $handle) {
+			return str_replace(' src', ' async src', $tag);
+		} else {
+			return str_replace(' src', ' defer src', $tag);
+		}
+	}
     
     /**
      * Include scripts for all pages

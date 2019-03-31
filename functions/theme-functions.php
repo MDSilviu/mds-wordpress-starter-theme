@@ -57,7 +57,6 @@ if (!function_exists( 'mds_setup')) {
             'gallery',
             'caption',
         ));
-
     }
 }
 

@@ -21,7 +21,26 @@ function mds_woocommerce_wrapper_end() {
 /**
  * Add theme support for woocommerce
  */
-add_action( 'after_setup_theme', 'mds_woocommerce_support' );
+add_action('after_setup_theme', 'mds_woocommerce_support');
 function mds_woocommerce_support() {
-    add_theme_support( 'woocommerce' );
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
+//    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
+}
+
+
+/**
+ * Remove woocommerce main styles
+ *
+ * @param $enqueue_styles
+ * @return mixed
+ */
+//add_filter('woocommerce_enqueue_styles', 'mds_dequeue_woocommerce_styles' );
+function mds_dequeue_woocommerce_styles($enqueue_styles) {
+    unset($enqueue_styles['woocommerce-general']);
+    unset($enqueue_styles['woocommerce-layout']);
+    unset($enqueue_styles['woocommerce-smallscreen']);
+
+    return $enqueue_styles;
 }

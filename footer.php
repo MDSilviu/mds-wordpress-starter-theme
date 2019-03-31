@@ -24,9 +24,6 @@
         </footer>
         <!-- /.mds-footer -->
 
-    </div>
-    <!-- /.mds-body-wrapper -->
-
     <?php wp_footer(); ?>
 
     </body>

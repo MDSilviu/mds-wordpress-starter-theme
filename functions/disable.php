@@ -96,6 +96,7 @@ function mds_remove_x_pingback($headers) {
 add_filter('json_enabled', '__return_false');
 add_filter('json_jsonp_enabled', '__return_false');
 
+
 /**
  * Disable WP-API version 2.x
  */

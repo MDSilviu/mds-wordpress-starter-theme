@@ -26,25 +26,23 @@ add_action( 'tgmpa_register', 'mds_starter_theme_register_required_plugins' );
 function mds_starter_theme_register_required_plugins() {
     
     $plugins = array(
-        
+
 //        array(
-//            'name'               => 'Custom Post Order', // The plugin name.
-//            'slug'               => 'intuitive-custom-post-order', // The plugin slug (typically the folder name).
-//            'source'             => get_stylesheet_directory() . '/inc/plugins/intuitive-custom-post-order.zip', // The plugin source.
-//            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-//            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
-//            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+//            'name'               => 'Contact Form 7',
+//            'slug'               => 'contact-form-7',
+//            'required'           => true, // If false, the plugin is only \'recommended\' instead of required.'
+//            'version'            => '4.6', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+//            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 //            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
 //            'external_url'       => '', // If set, overrides default API URL and points to an external URL.
 //        ),
 //
 //        array(
-//            'name'               => 'Duplicate Posts', // The plugin name.
-//            'slug'               => 'duplicate-post', // The plugin slug (typically the folder name).
-//            'source'             => get_stylesheet_directory() . '/inc/plugins/duplicate-post.2.6.zip', // The plugin source.
-//            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-//            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
-//            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+//            'name'               => 'Intuitive Custom Post Order',
+//            'slug'               => 'intuitive-custom-post-order',
+//            'required'           => true, // If false, the plugin is only \'recommended\' instead of required.'
+//            'version'            => '3.0.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+//            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 //            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
 //            'external_url'       => '', // If set, overrides default API URL and points to an external URL.
 //        ),
