@@ -18,7 +18,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Carbon_Fields_Plugin\\": "core/"
+            "Carbon_Fields_Plugin\\": "core/",
+            "Carbon_Fields_Yoast\\": "core/"
         }
     },
     "require": {

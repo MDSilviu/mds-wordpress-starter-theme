@@ -61,6 +61,16 @@ if (!function_exists( 'mds_setup')) {
 }
 
 /**
+ * Set custom permalinks for rest api to work
+ */
+add_action('after_switch_theme', 'mds_set_rewrite_rules');
+function mds_set_rewrite_rules() {
+	global $wp_rewrite;
+	$wp_rewrite->set_permalink_structure('/%postname%/');
+	$wp_rewrite->flush_rules(true);
+}
+
+/**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
  * Priority 0 to make it available to lower priority callbacks.
@@ -183,3 +193,46 @@ function mds_pagination($the_query = null) {
     }
 }
 
+/**
+ * Inline if svg
+ * @param $attachment_id
+ * @param string $size
+ * @param bool $icon
+ * @param string $attr
+ *
+ */
+function mds_inline_if_svg($attachment_id, $size = 'thumbnail', $icon = false, $attr = '') {
+	$logo_url = wp_get_attachment_image_url($attachment_id, $size);
+
+	if (strpos(get_post_mime_type($attachment_id), 'svg') !== false) {
+		echo file_get_contents($logo_url);
+	} else {
+		echo wp_get_attachment_image($attachment_id, $size, $icon, $attr) ;
+	}
+}
+
+/**
+ * Render svg icon markup
+ *
+ * @param $icon_name
+ */
+function mds_icon($icon_name) {
+	return
+		'
+		<i class="cc-icon">
+            <svg><use xlink:href="' . mds_get_icons_file_uri() . '#icon-' . $icon_name . '"></use></svg>
+	    </i>
+	  	'
+		;
+}
+
+/**
+ * Check if content is not empty, doesn't have only spaces or empty tags
+ *
+ * @param $content
+ *
+ * @return bool
+ */
+function mds_empty_content($content) {
+	return trim(str_replace('&nbsp;','',strip_tags($content))) == '';
+}

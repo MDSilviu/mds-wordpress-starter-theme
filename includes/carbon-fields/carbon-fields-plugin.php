@@ -23,4 +23,5 @@ function carbon_fields_boot_plugin() {
 		require( __DIR__ . '/vendor/autoload.php' );
 	}
 	\Carbon_Fields\Carbon_Fields::boot();
+	new \Carbon_Fields_Yoast\Carbon_Fields_Yoast;
 }

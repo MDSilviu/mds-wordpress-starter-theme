@@ -96,13 +96,6 @@ function mds_remove_x_pingback($headers) {
 add_filter('json_enabled', '__return_false');
 add_filter('json_jsonp_enabled', '__return_false');
 
-
-/**
- * Disable WP-API version 2.x
- */
-add_filter('rest_enabled', '__return_false');
-add_filter('rest_jsonp_enabled', '__return_false');
-
 /**
  * Remove REST API info from head and headers
  */
@@ -111,11 +104,45 @@ remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links');
 remove_action( 'template_redirect', 'rest_output_link_header', 11 );
 
+/**
+ * Remove excerpt textarea on posts
+ */
+add_action('admin_menu', 'mds_remove_default_excerpt_metabox');
+function mds_remove_default_excerpt_metabox() {
+	remove_meta_box('postexcerpt', 'post', 'normal');
+	remove_meta_box('postexcerpt', 'page', 'normal');
+}
 
 /**
- * Disable Post Tags Option
+ * Disable registered taxonomies
  */
-//add_action('init', 'mds_unregister_tags');
-//function mds_unregister_tags() {
+add_action('init', 'mds_unregister_taxonomies');
+function mds_unregister_taxonomies() {
 //    unregister_taxonomy_for_object_type('post_tag', 'post');
-//}
+}
+
+/**
+ * Remove wordpress default widgets
+ */
+add_action('widgets_init', 'mds_disable_widget');
+function mds_disable_widget() {
+	unregister_widget('WP_Widget_Pages');
+	unregister_widget('WP_Widget_Calendar');
+	unregister_widget('WP_Widget_Archives');
+	unregister_widget('WP_Widget_Links');
+	unregister_widget('WP_Widget_Meta');
+	unregister_widget('WP_Widget_Text');
+	unregister_widget('WP_Widget_Recent_Posts');
+	unregister_widget('WP_Widget_Recent_Comments');
+	unregister_widget('WP_Widget_RSS');
+	unregister_widget('WP_Widget_Tag_Cloud');
+	unregister_widget('WP_Widget_Categories');
+	unregister_widget('WP_Nav_Menu_Widget');
+	unregister_widget('WP_Widget_Search');
+	unregister_widget('WP_Widget_Media_Audio');
+	unregister_widget('WP_Widget_Media');
+	unregister_widget('WP_Widget_Media_Image');
+	unregister_widget('WP_Widget_Media_Video');
+	unregister_widget('WP_Widget_Media_Gallery');
+	unregister_widget('WP_Widget_Custom_HTML');
+}

@@ -30,7 +30,8 @@ class Helper {
 	}
 
 	/**
-	 * Get a clone of a field with a value loaded
+	 * Get a clone of a field with a value loaded.
+	 * WARNING: The datastore is cloned!
 	 *
 	 * @param  int    $object_id      Object id to get value for (e.g. post_id, term_id etc.)
 	 * @param  string $container_type Container type to search in. Optional if $container_id is supplied
@@ -54,6 +55,41 @@ class Helper {
 	}
 
 	/**
+	 * Execute an action with a clone of a field with a value loaded.
+	 * WARNING: The datastore reference is kept!
+	 *
+	 * @param  int      $object_id      Object id to get value for (e.g. post_id, term_id etc.)
+	 * @param  string   $container_type Container type to search in. Optional if $container_id is supplied
+	 * @param  string   $container_id   Container id to search in. Optional if $container_type is supplied
+	 * @param  string   $field_name     Field name to search for
+	 * @param  \Closure $action         Action to execute
+	 * @return void
+	 */
+	public static function with_field_clone( $object_id, $container_type, $container_id, $field_name, $action ) {
+		$field = static::get_field( $container_type, $container_id, $field_name );
+
+		if ( ! $field ) {
+			return;
+		}
+
+		$clone = clone $field;
+		$datastore = $clone->get_datastore();
+		$datastore_object_id = $datastore->get_object_id();
+
+		if ( $object_id !== null ) {
+			$datastore->set_object_id( $object_id );
+		}
+
+		$result = $action($clone);
+
+		if ( $object_id !== null ) {
+			$datastore->set_object_id( $datastore_object_id );
+		}
+
+		return $result;
+	}
+
+	/**
 	 * Get a value formatted for end-users
 	 *
 	 * @param  int    $object_id      Object id to get value for (e.g. post_id, term_id etc.)
@@ -63,36 +99,49 @@ class Helper {
 	 * @return mixed
 	 */
 	public static function get_value( $object_id, $container_type, $container_id, $field_name ) {
-		$field = static::get_field_clone( $object_id, $container_type, $container_id, $field_name );
+		return static::with_field_clone(
+			$object_id,
+			$container_type,
+			$container_id,
+			$field_name,
+			function( $field ) {
+				if ( ! $field ) {
+					return '';
+				}
 
-		if ( ! $field ) {
-			return '';
-		}
-
-		$field->load();
-		return $field->get_formatted_value();
+				$field->load();
+				return $field->get_formatted_value();
+			}
+		);
 	}
 
 	/**
 	 * Set value for a field
 	 *
-	 * @param int    $object_id      Object id to get value for (e.g. post_id, term_id etc.)
-	 * @param string $container_type Container type to search in
-	 * @param string $container_id
-	 * @param string $field_name     Field name
-	 * @param array $value Field expects a `value_set`; Complex_Field expects a `value_tree` - refer to DEVELOPMENT.md
+	 * @param  int    $object_id      Object id to get value for (e.g. post_id, term_id etc.)
+	 * @param  string $container_type Container type to search in
+	 * @param  string $container_id
+	 * @param  string $field_name     Field name
+	 * @param  array  $value          Field expects a `value_set`. Complex_Field expects a `value_tree` - refer to DEVELOPMENT.md
+	 * @return void
 	 */
 	public static function set_value( $object_id, $container_type, $container_id, $field_name, $value ) {
-		$field = static::get_field_clone( $object_id, $container_type, $container_id, $field_name );
+		static::with_field_clone(
+			$object_id,
+			$container_type,
+			$container_id,
+			$field_name,
+			function( $field ) use ( $container_type, $container_id, $field_name, $value ) {
+				if ( ! $field ) {
+					$container_message = $container_id ? 'in container with id "' . $container_id . '"' : 'in containers of type "' . $container_type . '"';
+					Incorrect_Syntax_Exception::raise( 'Could not find a field which satisfies the supplied pattern ' . $container_message . ': ' . $field_name );
+					return;
+				}
 
-		if ( ! $field ) {
-			$container_message = $container_id ? 'in container with id "' . $container_id . '"' : 'in containers of type "' . $container_type . '"';
-			Incorrect_Syntax_Exception::raise( 'Could not find a field which satisfies the supplied pattern ' . $container_message . ': ' . $field_name );
-			return;
-		}
-
-		$field->set_value( $value );
-		$field->save();
+				$field->set_value( $value );
+				$field->save();
+			}
+		);
 	}
 
 	/**
@@ -116,6 +165,7 @@ class Helper {
 	 * @return mixed
 	 */
 	public static function get_post_meta( $id, $name, $container_id = '' ) {
+		$id = apply_filters( 'carbon_get_post_meta_post_id', $id, $name, $container_id );
 		return static::get_value( $id, 'post_meta', $container_id, $name );
 	}
 
@@ -440,81 +490,93 @@ class Helper {
 	 * Get an attachment ID given a file URL
 	 * Modified version of https://wpscholar.com/blog/get-attachment-id-from-wp-image-url/
 	 *
+	 * @static
+	 * @access public
+	 *
 	 * @param  string  $url
-	 * @return integet
+	 * @return integer
 	 */
 	public static function get_attachment_id( $url ) {
-		$dir = wp_upload_dir();
+		$attachment_id = 0;
+		$dir           = wp_upload_dir();
+
+		/**
+		 * Filters the attachment URL from which the attachment ID is being determined.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param string $url
+		 */
+		$url = apply_filters( 'carbon_fields_attachment_id_base_url', $url );
+
 		$filename = basename( $url );
 
-		if ( strpos( $url, $dir['baseurl'] . '/' ) === false ) {
-			return 0;
-		}
+		if ( strpos( $url, $dir['baseurl'] . '/' ) !== false ) {
+			$query_args = array(
+				'post_type'   => 'attachment',
+				'post_status' => 'inherit',
+				'fields'      => 'ids',
+				'meta_query'  => array(
+					array(
+						'value'   => $filename,
+						'compare' => 'LIKE',
+						'key'     => '_wp_attachment_metadata',
+					),
+				)
+			);
 
-		$query_args = array(
-			'post_type'   => 'attachment',
-			'post_status' => 'inherit',
-			'fields'      => 'ids',
-			'meta_query'  => array(
-				array(
-					'value'   => $filename,
-					'compare' => 'LIKE',
-					'key'     => '_wp_attachment_metadata',
-				),
-			)
-		);
-		$query = new WP_Query( $query_args );
+			$query = new WP_Query( $query_args );
 
-		if ( $query->have_posts() ) {
-			foreach ( $query->posts as $post_id ) {
-				$meta = wp_get_attachment_metadata( $post_id );
-				$original_file = basename( $meta['file'] );
-				$cropped_image_files = wp_list_pluck( $meta['sizes'], 'file' );
+			if ( $query->have_posts() ) {
+				foreach ( $query->posts as $post_id ) {
+					$meta                = wp_get_attachment_metadata( $post_id );
+					$original_file       = basename( $meta['file'] );
+					$cropped_image_files = wp_list_pluck( $meta['sizes'], 'file' );
 
-				if ( $original_file === $filename || in_array( $filename, $cropped_image_files ) ) {
-					return intval( $post_id );
+					if ( $original_file === $filename || in_array( $filename, $cropped_image_files ) ) {
+						$attachment_id = intval( $post_id );
+
+						break;
+					}
 				}
 			}
 		}
 
-		return 0;
+		/**
+		 * Filters the attachment id found from the passed attachment URL.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param  integer $attachment_id
+		 * @param  string  $url
+		 */
+		return apply_filters( 'carbon_fields_attachment_id_from_url', $attachment_id, $url );
 	}
 
 	/**
 	 * Returns attachment metadata from an ID.
 	 *
+	 * @static
+	 * @access public
+	 *
 	 * @param  string  $id
-	 * @param  string  $type Value Type. Can be either id or url
+	 * @param  string  $type Value Type. Can be either id or url.
 	 * @return boolean
 	 */
 	public static function get_attachment_metadata( $id, $type ) {
-		$attachment_meta = array(
-			'thumb_url'         => '',
-			'default_thumb_url' => '',
-			'file_ext'          => '',
-			'file_type'         => '',
-			'file_name'         => '',
-			'file_url'          => '',
-			'edit_nonce'        => '',
-			'title'             => '',
-			'caption'           => '',
-			'description'       => '',
-			'alt'               => '',
-			'date'              => '',
-			'filesize'          => '',
-			'width'             => '',
-			'height'            => '',
+		$attachment_metadata = array(
+			'id'        => 0,
+			'thumb_url' => '',
+			'file_type' => '',
+			'file_name' => '',
 		);
 
-		// when value_type is set to "url" the $id will hold the url, not the id
+		// when `$type` is set to 'url' the `$id` will hold the url, not the id
 		if ( $type === 'url' ) {
 			$attachment_id = static::get_attachment_id( $id );
 
 			if ( $attachment_id === 0 ) {
-				$attachment_meta['thumb_url'] = $id;
-				$attachment_meta['default_thumb_url'] = $id;
-				$attachment_meta['file_url'] = $id;
-				return $attachment_meta;
+				$attachment_metadata['thumb_url'] = $id;
 			}
 
 			$id = $attachment_id;
@@ -523,51 +585,44 @@ class Helper {
 		$attachment = get_post( $id );
 
 		if ( ! $attachment ) {
-			return $attachment_meta;
+			/**
+			 * Filter the metadata for the attachment in case the attachment post is not found.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @param array           $attachment_metadata  The attachment metadata.
+			 * @param integer|string  $id                   The attachment ID. Either attachment post ID or attachment url.
+			 * @param string          $type                 The type of `$id` passed. Either 'id' or 'url'.
+			 */
+			return apply_filters( 'carbon_fields_attachment_not_found_metadata', $attachment_metadata, $id, $type );
 		}
 
-		$meta                           = wp_get_attachment_metadata( $attachment->ID );
-		list( $src, $width, $height )   = wp_get_attachment_image_src( $attachment->ID, 'full' );
+		$attachment_metadata['id']        = intval( $id );
+		$attachment_metadata['file_url']  = is_numeric( $id ) ? wp_get_attachment_url( $id ) : $id;
+		$attachment_metadata['file_name'] = basename( $attachment_metadata['file_url'] );
+		$attachment_metadata['filetype']  = wp_check_filetype( $attachment_metadata['file_url'] );
+		$attachment_metadata['file_type'] = preg_replace( '~\/.+$~', '', $attachment_metadata['filetype']['type'] ); // image, video, etc..
 
-		$attachment_meta['edit_nonce']  = wp_create_nonce( 'update-post_' . $id );
-		$attachment_meta['title']       = get_the_title( $id );
-		$attachment_meta['caption']     = get_post_field( 'post_excerpt', $id );
-		$attachment_meta['description'] = get_post_field( 'post_content', $id );
-		$attachment_meta['alt']         = get_post_meta( $id, '_wp_attachment_image_alt', true );
-		$attachment_meta['date']        = mysql2date( __( 'F j, Y' ), $attachment->post_date );
-		$attachment_meta['width']       = $width;
-		$attachment_meta['height']      = $height;
-		$attachment_meta['file_url']    = is_numeric( $id ) ? wp_get_attachment_url( $id ) : $id;
-		$attachment_meta['file_name']   = basename( $attachment_meta['file_url'] );
-		$attachment_meta['filetype']    = wp_check_filetype( $attachment_meta['file_url'] );
-		$attachment_meta['file_ext']    = $attachment_meta['filetype']['ext']; // png, mp3, etc..
-		$attachment_meta['file_type']   = preg_replace( '~\/.+$~', '', $attachment_meta['filetype']['type'] ); // image, video, etc..
-
-		if ( $attachment_meta['file_type'] === 'audio' ) {
-			$attachment_meta['artist'] = $meta['artist'];
-			$attachment_meta['album'] = $meta['album'];
-			$attachment_meta['length'] = $meta['length_formatted'];
-		}
-
-		$attachment_meta['default_thumb_url'] = wp_mime_type_icon( $id );
-
-		if ( $attachment_meta['file_type'] == 'image' ) {
-			$attachment_meta['thumb_url'] = $attachment_meta['file_url'];
+		if ( $attachment_metadata['file_type'] == 'image' ) {
+			$attachment_metadata['thumb_url'] = $attachment_metadata['file_url'];
 
 			if ( $type == 'id' ) {
-				$thumb_src = wp_get_attachment_image_src( $id, 'thumbnail' );
-				$attachment_meta['thumb_url'] = $thumb_src[0];
+				$attachment_metadata['thumb_url'] = wp_get_attachment_thumb_url( $id );
 			}
 		} else {
-			$attachment_meta['thumb_url'] = $attachment_meta['default_thumb_url'];
+			$attachment_metadata['thumb_url'] = wp_mime_type_icon( $id );
 		}
 
-		$attached_file = get_attached_file( $attachment->ID );
-		if ( file_exists( $attached_file ) ) {
-			$attachment_meta['filesize'] = size_format( filesize( $attached_file ) );
-		}
-
-		return $attachment_meta;
+		/**
+		 * Filter the metadata for the attachment.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param array           $attachment_metadata  The attachment metadata.
+		 * @param integer|string  $id                   The attachment ID. Either attachment post ID or attachment url.
+		 * @param string          $type                 The type of `$id` passed. Either 'id' or 'url'.
+		 */
+		return apply_filters( 'carbon_fields_attachment_metadata', $attachment_metadata, $id, $type );
 	}
 
 	/**
@@ -594,8 +649,8 @@ class Helper {
 	 */
 	public static function expand_compacted_input( $input ) {
 		if ( isset( $input[ \Carbon_Fields\COMPACT_INPUT_KEY ] ) ) {
-			$json = json_decode( $input[ \Carbon_Fields\COMPACT_INPUT_KEY ], true );
-			$input = array_merge( $input, $json );
+			$inputs = $input[ \Carbon_Fields\COMPACT_INPUT_KEY ];
+			$input = array_merge( $input, $inputs );
 		}
 		return $input;
 	}

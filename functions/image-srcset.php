@@ -54,14 +54,30 @@ function mds_get_image_size($type) {
  */
 add_filter('wp_get_attachment_image_attributes', 'mds_image_attr', 10, 3);
 function mds_image_attr($attr, $attachment, $size) {
-	if (in_array('mds-lazy', explode(' ', $attr['class']))) {
+	if (in_array('js-lazy', explode(' ', $attr['class']))) {
 		$image = wp_get_attachment_image_src($attachment->ID, $size);
 		$svg_placeholder = base64_encode("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 ". $image[1] ." ". $image[2] ."\"></svg>");
+
 		if (!isset($attr['srcset']) || empty($attr['srcset'])) {
 			$attr['data-srcset'] = $attr['src'];
 		} else {
 			$attr['data-srcset'] = $attr['srcset'];
 		}
+
+		$attr['srcset'] = "data:image/svg+xml;base64,". $svg_placeholder;
+	}
+
+	if (in_array('swiper-lazy', explode(' ', $attr['class']))) {
+		$image = wp_get_attachment_image_src($attachment->ID, $size);
+		$svg_placeholder = base64_encode("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 ". $image[1] ." ". $image[2] ."\"></svg>");
+		$attr['data-src'] = $attr['src'];
+
+		if (!isset($attr['srcset']) || empty($attr['srcset'])) {
+			$attr['data-srcset'] = $attr['src'];
+		} else {
+			$attr['data-srcset'] = $attr['srcset'];
+		}
+
 		$attr['srcset'] = "data:image/svg+xml;base64,". $svg_placeholder;
 	}
 

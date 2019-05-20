@@ -26,16 +26,22 @@ add_action( 'tgmpa_register', 'mds_starter_theme_register_required_plugins' );
 function mds_starter_theme_register_required_plugins() {
     
     $plugins = array(
-
-//        array(
-//            'name'               => 'Contact Form 7',
-//            'slug'               => 'contact-form-7',
-//            'required'           => true, // If false, the plugin is only \'recommended\' instead of required.'
-//            'version'            => '4.6', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
-//            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-//            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-//            'external_url'       => '', // If set, overrides default API URL and points to an external URL.
-//        ),
+	    array(
+		    'name'               => 'Safe SVG',
+		    'slug'               => 'safe-svg',
+		    'required'           => true, // If false, the plugin is only \'recommended\' instead of required.'
+		    'version'            => '1.9.3', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+		    'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+		    'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+	    ),
+//	    array(
+//		    'name'               => 'Contact Form 7',
+//		    'slug'               => 'contact-form-7',
+//		    'required'           => true, // If false, the plugin is only \'recommended\' instead of required.'
+//		    'version'            => '5.1.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+//		    'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+//		    'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+//	    ),
 //
 //        array(
 //            'name'               => 'Intuitive Custom Post Order',

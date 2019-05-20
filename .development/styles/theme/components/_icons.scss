@@ -1,0 +1,25 @@
+.mds-icon-inline,
+.mds-icon {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  user-select: none;
+
+  & > svg {
+    display: block;
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+}
+
+.mds-icon {
+  display: flex;
+}
+
+.mds-icon-inline {
+  display: inline-flex;
+}

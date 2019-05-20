@@ -1,0 +1,75 @@
+input[type=submit],
+input[type=reset],
+button,
+.mds-button {
+  display: inline-block;
+  position: relative;
+  border: none;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  user-select: none;
+  line-height: inherit;
+
+  background: transparent;
+  @include mds-font-size(16px);
+  padding: 12px 20px;
+  border-radius: 2px;
+  font-weight: bold;
+
+  &:after,
+  &:before {
+    content: "";
+    background-color: rgba(black, 0.06);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 250ms linear;
+  }
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+
+    &:before {
+      transition-duration: 85ms;
+      opacity: 0.6;
+    }
+  }
+
+  &:active {
+    outline: none;
+
+    &:after {
+      transition-duration: 85ms;
+      opacity: 0.6;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+}
+
+.mds-button {
+  &--raised {
+    box-shadow: $shadow-dp2;
+    will-change: box-shadow;
+    transition: box-shadow 280ms $animation-standard-curve;
+
+    &:active {
+      box-shadow: $shadow-dp8;
+    }
+  }
+}

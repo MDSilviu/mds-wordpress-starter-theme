@@ -1,0 +1,35 @@
+{
+    "type": "wordpress-theme",
+    "keywords": [
+        "wordpress",
+        "theme",
+        "starter theme",
+        "mdsilviu"
+    ],
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "license": "GPL-2.0-only",
+    "require": {
+        "php": ">=5.5",
+        "composer/installers": "^1.4",
+        "timber/timber": "^1.9.*",
+        "htmlburger/carbon-fields": "^3.*",
+        "htmlburger/carbon-fields-yoast": "^1.*"
+    },
+    "require-dev": {
+        "filp/whoops": "^2.*",
+        "djboris88/timber-debugger": "^1.*",
+        "symfony/debug": "~4.*",
+        "symfony/var-dumper": "~4.*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "installer-paths": {
+            "sites/example.com/modules/{$name}": ["vendor/package"]
+        }
+    }
+}
+}

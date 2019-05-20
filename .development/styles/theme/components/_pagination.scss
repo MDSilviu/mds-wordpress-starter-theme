@@ -1,0 +1,46 @@
+.mds-pagination {
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    li {
+      padding: 0 7px;
+
+      .page-numbers {
+        width: 58px;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+
+
+        @include font-size(28px, 1);
+        font-weight: 800;
+        color: white;
+        -webkit-text-stroke: 2px $color-blue;
+        background: transparent;
+        transition: background 0.2s ease;
+
+        &.prev,
+        &.next {
+          @include font-size(22px, 1);
+        }
+
+        &:hover {
+          text-decoration: none;
+          border-image-source: none;
+          border-color: $color-main-dark;
+        }
+
+        &.current {
+          -webkit-text-stroke: 2px $color-main-dark;
+          background: linear-gradient(to bottom, $color-main 0%, $color-main-dark 100%);
+          border-image-source: none;
+          border-color: $color-main-dark;
+        }
+      }
+    }
+  }
+}
