@@ -1,4 +1,11 @@
 {
-  "extends": "@infinumjs/stylelint-config",
-  "ignoreFiles": "public/**/*.css"
+  "extends": "stylelint-config-recommended-scss",
+  "ignoreFiles": "assets/**/*.css",
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "no-empty-source": null,
+    "indentation": 2
+  }
 }

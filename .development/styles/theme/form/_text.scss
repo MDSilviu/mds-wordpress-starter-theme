@@ -1,7 +1,7 @@
 input::placeholder,
 ::placeholder {
   color: rgba(black, 0.38);
-  transition: color 180ms $animation-standard-curve;
+  transition: color 180ms ease;
   opacity: 1;
 }
 
@@ -42,8 +42,8 @@ input[type=url] {
   box-shadow: none;
 
 
-  transition: border-bottom-color 180ms $animation-standard-curve,
-              background-color 180ms $animation-standard-curve;
+  transition: border-bottom-color 180ms ease,
+              background-color 180ms ease;
 
   padding: 10px 16px;
   border-bottom: 1px solid rgba(black, 0.12);

@@ -113,7 +113,7 @@ h3.mds-comments-title {
 }
 
 .mds-no-comments {
-  @include mds-font-size(16px);
+  @include font-size(16px);
   font-weight: bold;
 }
 

@@ -14,7 +14,7 @@ button,
   line-height: inherit;
 
   background: transparent;
-  @include mds-font-size(16px);
+  @include font-size(16px);
   padding: 12px 20px;
   border-radius: 2px;
   font-weight: bold;
@@ -66,7 +66,7 @@ button,
   &--raised {
     box-shadow: $shadow-dp2;
     will-change: box-shadow;
-    transition: box-shadow 280ms $animation-standard-curve;
+    transition: box-shadow 280ms ease;
 
     &:active {
       box-shadow: $shadow-dp8;

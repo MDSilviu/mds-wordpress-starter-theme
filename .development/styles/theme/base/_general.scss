@@ -11,12 +11,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: $mds-base-font-open-sans;
-  color: $mds-color-black;
+  color: black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 
-  @include mds-font-size(14px, $mds-base-line-height);
+  @include font-size(14px, $mds-base-line-height);
 }
 
 * {
@@ -69,25 +69,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  @include mds-font-size($mds-heading-size-1);
+  @include font-size($mds-heading-size-1);
 }
 
 h2 {
-  @include mds-font-size($mds-heading-size-2);
+  @include font-size($mds-heading-size-2);
 }
 
 h3 {
-  @include mds-font-size($mds-heading-size-3);
+  @include font-size($mds-heading-size-3);
 }
 
 h4 {
-  @include mds-font-size($mds-heading-size-4);
+  @include font-size($mds-heading-size-4);
 }
 
 h5 {
-  @include mds-font-size($mds-heading-size-5);
+  @include font-size($mds-heading-size-5);
 }
 
 h6 {
-  @include mds-font-size($mds-heading-size-6);
+  @include font-size($mds-heading-size-6);
 }

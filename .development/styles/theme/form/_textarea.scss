@@ -12,8 +12,8 @@ textarea {
   border-left: none;
   border-right: none;
 
-  transition: border-bottom-color 180ms $animation-standard-curve,
-              background-color 180ms $animation-standard-curve;
+  transition: border-bottom-color 180ms ease,
+              background-color 180ms ease;
 
   border-bottom: 1px solid rgba(black, 0.12);
   padding: 10px 16px;

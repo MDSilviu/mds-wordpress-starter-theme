@@ -1,8 +1,8 @@
-const config = require('./webpack/config');
+const config = require('./build/lib/config');
 
 module.exports = (env, argv) => {
-  const {mode} = argv;
-  config.env = mode;
+  const { mode } = argv;
+  config.setEnv(mode);
 
-  return require(`./webpack/webpack.${mode}.js`); // eslint-disable-line import/no-dynamic-require, global-require
+  return require(`./build/webpack.${mode}.js`); // eslint-disable-line import/no-dynamic-require, global-require
 };

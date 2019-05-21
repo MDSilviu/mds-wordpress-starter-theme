@@ -5,15 +5,12 @@
     "wordpress",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:jest/recommended",
-    "@infinumjs"
+    "plugin:compat/recommended"
   ],
   "env": {
     "browser": true,
     "es6": true,
-    "node": true,
-    "mocha": true,
-    "jest/globals": true
+    "node": true
   },
   "parserOptions": {
     "sourceType": "module",
@@ -28,7 +25,7 @@
     "document": true,
     "$": true
   },
-  "plugins": ["react", "jsx-a11y", "jest"],
+  "plugins": ["react", "jsx-a11y"],
   "settings": {
     "import/core-modules": [
       "@wordpress/components",

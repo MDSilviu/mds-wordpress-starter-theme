@@ -24,14 +24,14 @@
       display: block;
       width: 6px;
       height: 10px;
-      border: solid $color-black;
+      border: solid black;
       border-width: 0 3px 3px 0;
       position: absolute;
       top: 50%;
       left: 7px;
       margin-top: -6px;
       transform: rotate(45deg) scale(0);
-      transition: transform 90ms 0ms $animation-standard-curve;
+      transition: transform 90ms 0ms ease;
     }
   }
 
