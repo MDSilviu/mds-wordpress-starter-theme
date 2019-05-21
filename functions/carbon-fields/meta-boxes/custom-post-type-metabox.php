@@ -13,16 +13,16 @@ Container::make('post_meta', 'Example metabox')
          ->set_context('normal')
          ->set_priority('high')
          ->add_fields(array(
-	         Field::make('complex', 'page_content', __('Content', 'mindclash'))
+	         Field::make('complex', 'page_content', __('Content', 'mds_starter_theme'))
 	              ->set_datastore(new Serialized_Post_Meta_Datastore())
 	              ->set_collapsed(true)
-	              ->add_fields('intro_block', __('Title & Intro Text Block', 'mindclash'), array(
+	              ->add_fields('intro_block', __('Title & Intro Text Block', 'mds_starter_theme'), array(
 		              Field::make('text', 'page_with_form')
 		                   ->set_attribute('type', 'hidden')
 		                   ->set_classes(array('cc--hidden'))
 		                   ->set_default_value(true),
-		              Field::make('text', 'title', __("Title", 'mindclash')),
-		              Field::make('rich_text', 'text', __("Content", 'mindclash'))
+		              Field::make('text', 'title', __("Title", 'mds_starter_theme')),
+		              Field::make('rich_text', 'text', __("Content", 'mds_starter_theme'))
 	              ))
 	              ->set_header_template('Title & Intro Text Block'),
 	         Field::make("image", "banner_image_id", __("Banner Background Image", 'mds_starter_theme'))

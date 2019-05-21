@@ -24,23 +24,23 @@ function mds_custom_taxonomy() {
          * Labels used when displaying the taxonomy in the admin and sometimes on the front end.
          */
         'labels'            => array(
-            'name'				            => __( 'Custom Taxonomies' ),
-            'singular_name'			        => __( 'Custom Taxonomy' ),
-            'menu_name'			            => __( 'Custom Taxonomy'),
-            'all_items'			            => __( 'All Custom Taxonomies' ),
-            'view_item'                     => __( 'View Custom Taxonomy' ),
-            'edit_item'			            => __( 'Edit Custom Taxonomy' ),
-            'update_item'			        => __( 'Update Custom Taxonomy'),
-            'add_new_item'			        => __( 'Add New Custom Taxonomy'),
-            'new_item_name'			        => __( 'New Single Custom Taxonomy'),
-            'parent_item'			        => __( 'Parent Custom Taxonomy' ),
-            'parent_item_colon'		        => __( 'Parent Custom Taxonomy'  ),
-            'search_items'			        => __( 'Search Custom Taxonomy' ),
-            'popular_items'			        => __( 'Popular Custom Taxonomy' ),
-            'separate_items_with_commas'    => __( 'Separate Custom Taxonomy with commas' ),
-            'add_or_remove_items'	        => __( 'Add or remove Custom Taxonomy'),
-            'choose_from_most_used'	        => __( 'Choose from most used Custom Taxonomy'),
-            'not_found'                     => __( 'No Custom Taxonomy found.' )
+            'name'				            => __( 'Custom Taxonomies', 'mds_starter_theme' ),
+            'singular_name'			        => __( 'Custom Taxonomy', 'mds_starter_theme' ),
+            'menu_name'			            => __( 'Custom Taxonomy', 'mds_starter_theme' ),
+            'all_items'			            => __( 'All Custom Taxonomies', 'mds_starter_theme' ),
+            'view_item'                     => __( 'View Custom Taxonomy', 'mds_starter_theme' ),
+            'edit_item'			            => __( 'Edit Custom Taxonomy', 'mds_starter_theme' ),
+            'update_item'			        => __( 'Update Custom Taxonomy', 'mds_starter_theme' ),
+            'add_new_item'			        => __( 'Add New Custom Taxonomy', 'mds_starter_theme' ),
+            'new_item_name'			        => __( 'New Single Custom Taxonomy', 'mds_starter_theme' ),
+            'parent_item'			        => __( 'Parent Custom Taxonomy', 'mds_starter_theme' ),
+            'parent_item_colon'		        => __( 'Parent Custom Taxonomy', 'mds_starter_theme' ),
+            'search_items'			        => __( 'Search Custom Taxonomy', 'mds_starter_theme' ),
+            'popular_items'			        => __( 'Popular Custom Taxonomy', 'mds_starter_theme' ),
+            'separate_items_with_commas'    => __( 'Separate Custom Taxonomy with commas', 'mds_starter_theme' ),
+            'add_or_remove_items'	        => __( 'Add or remove Custom Taxonomy', 'mds_starter_theme'),
+            'choose_from_most_used'	        => __( 'Choose from most used Custom Taxonomy', 'mds_starter_theme' ),
+            'not_found'                     => __( 'No Custom Taxonomy found.', 'mds_starter_theme' )
         ),
 
         /**

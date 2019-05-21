@@ -9,12 +9,12 @@
  * Include Carbon Fields file
  */
 require get_template_directory() . '/functions/carbon-fields/carbon-helper-functions.php';
-require get_template_directory() . '/inc/carbon-fields/carbon-fields-plugin.php';
+require get_template_directory() . '/includes/composer-packages.php';
 
 /**
  * Load the file with filters and functions to disable/remove some feature for WordPress
  */
-//require get_template_directory() . '/functions/disable.php';
+require get_template_directory() . '/functions/disable.php';
 
 /**
  * Load the file with required plugins
@@ -41,11 +41,6 @@ require get_template_directory() . '/functions/image-size.php';
  */
 require get_template_directory() . '/functions/image-srcset.php';
 
-/**
- * Load the file for sidebars init and custom widgets
- */
-require get_template_directory() . '/functions/widgets/widgets.php';
-
 
 /**
  * Load the file for woocomerce compatibility  and functions
@@ -55,7 +50,12 @@ require get_template_directory() . '/functions/widgets/widgets.php';
 /**
  * Load file for the plugin to remove comments option from theme .
  */
-//require get_template_directory() . '/includes/remove-comments-absolute.php';
+require get_template_directory() . '/includes/remove-comments-absolute.php';
+
+/**
+ * Include rest functions
+ */
+require get_template_directory() . '/functions/rest/rest-functions.php';
 
 
 /**

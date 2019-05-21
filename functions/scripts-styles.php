@@ -12,16 +12,16 @@ function mds_scripts() {
     /**
      * Include css for all pages
      */
-    wp_enqueue_style( 'mds-app', get_template_directory_uri() . '/assets/theme/css/mds-app.min.css', array(), '1.0' );
+    wp_enqueue_style( 'mds-app', get_template_directory_uri() . '/assets/styles/theme.css', array(), '1.0' );
     wp_enqueue_style( 'mds-custom', get_stylesheet_uri() );
     
     /**
      * Remove jquery from wp_header and include in wp_footer
      */
     wp_deregister_script( 'jquery' );
-	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/theme/js/plugins/jquery.min.js', FALSE, '3.2.1', TRUE );
+	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/scripts/vendor/jquery.min.js', FALSE, '3.2.1', TRUE );
 
-	wp_enqueue_script( 'mds-theme-js', get_template_directory_uri() . '/assets/theme/js/mds-theme.min.js', array('jquery'), '1.0', TRUE );
+	wp_enqueue_script( 'mds-theme-js', get_template_directory_uri() . '/assets/scripts/theme.js', array('jquery'), '1.0', TRUE );
 
 	/**
 	 * Include social share script
@@ -55,12 +55,6 @@ function mds_scripts() {
 //          wp_enqueue_script( 'template-js', get_template_directory_uri() . '/assets/js/*.js', array(), '', TRUE );
 //    }
 
-    /**
-     * Include script with ajax and nonce
-     */
-//    wp_enqueue_script('ajax-js', get_template_directory_uri() . '/assets/js/*.js', array(), '', TRUE);
-//    wp_localize_script( 'ajax-js', 'object_name', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce('nonce_name') ) );
-
 }
 add_action( 'wp_enqueue_scripts', 'mds_scripts' );
 
@@ -68,9 +62,9 @@ add_action( 'wp_enqueue_scripts', 'mds_scripts' );
  * Enqueue scripts and styles admin.
  */
 function mds_admin_scripts() {
-    wp_enqueue_style( 'mds-custom-admin', get_template_directory_uri() . '/assets/admin/css/mds-admin.css', false, '1.0.0' );
+    wp_enqueue_style( 'mds-custom-admin', get_template_directory_uri() . '/assets/styles/admin.css', false, '1.0.0' );
     
-    wp_enqueue_script( 'mds-custom-admin-js', get_template_directory_uri() . '/assets/admin/js/mds-admin.js', array(), '1.0.0', TRUE );
+    wp_enqueue_script( 'mds-custom-admin-js', get_template_directory_uri() . '/assets/scripts/admin.js', array(), '1.0.0', TRUE );
 }
 add_action( 'admin_enqueue_scripts', 'mds_admin_scripts' );
 

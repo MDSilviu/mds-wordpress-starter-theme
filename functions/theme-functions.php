@@ -143,7 +143,7 @@ function mds_body_classes($classes) {
  * @return string
  */
 function mds_get_icons_file_uri() {
-    return get_template_directory_uri() . '/assets/theme/img/icons.svg';
+    return get_template_directory_uri() . '/assets/img/icons.svg';
 }
 
 /**

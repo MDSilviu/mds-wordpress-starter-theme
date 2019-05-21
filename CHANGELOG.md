@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 4.0
+
+* Upgrade to webpack
+* Add rest functions
+* Add composer support
+* Add timber for twig templating
+
 ## Version 3.0
 
 * Change custom fields to Carbon Fields

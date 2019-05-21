@@ -70,10 +70,10 @@ function mds_starter_theme_register_required_plugins() {
         'is_automatic' => false,                   // Automatically activate plugins after installation or not.
         'message'      => '',                      // Message to output right before the plugins table.
         'strings'      => array(
-            'page_title'                      => __( 'Install Required Plugins', 'tgmpa' ),
-            'menu_title'                      => __( 'Install Plugins', 'tgmpa' ),
-            'installing'                      => __( 'Installing Plugin: %s', 'tgmpa' ), // %s = plugin name.
-            'oops'                            => __( 'Something went wrong with the plugin API.', 'tgmpa' ),
+            'page_title'                      => __( 'Install Required Plugins', 'mds_starter_theme' ),
+            'menu_title'                      => __( 'Install Plugins', 'mds_starter_theme' ),
+            'installing'                      => __( 'Installing Plugin: %s', 'mds_starter_theme' ), // %s = plugin name.
+            'oops'                            => __( 'Something went wrong with the plugin API.', 'mds_starter_theme' ),
             'notice_can_install_required'     => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.' ), // %1$s = plugin name(s).
             'notice_can_install_recommended'  => _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.' ), // %1$s = plugin name(s).
             'notice_cannot_install'           => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.' ), // %1$s = plugin name(s).
@@ -84,9 +84,9 @@ function mds_starter_theme_register_required_plugins() {
             'notice_cannot_update'            => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.' ), // %1$s = plugin name(s).
             'install_link'                    => _n_noop( 'Begin installing plugin', 'Begin installing plugins' ),
             'activate_link'                   => _n_noop( 'Begin activating plugin', 'Begin activating plugins' ),
-            'return'                          => __( 'Return to Required Plugins Installer', 'tgmpa' ),
-            'plugin_activated'                => __( 'Plugin activated successfully.', 'tgmpa' ),
-            'complete'                        => __( 'All plugins installed and activated successfully. %s', 'tgmpa' ), // %s = dashboard link.
+            'return'                          => __( 'Return to Required Plugins Installer', 'mds_starter_theme' ),
+            'plugin_activated'                => __( 'Plugin activated successfully.', 'mds_starter_theme' ),
+            'complete'                        => __( 'All plugins installed and activated successfully. %s', 'mds_starter_theme' ), // %s = dashboard link.
             'nag_type'                        => 'updated' // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
         )
     );

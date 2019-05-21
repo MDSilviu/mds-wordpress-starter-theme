@@ -1,10 +1,10 @@
 # WordPress Starter Theme
 
-Version: 3.0
+Version: 4.0
 
 ## Author:
 
-Silviu Manolache ( [mdsdev.eu](http://mdsdev.eu/) / [freelancer.com](https://www.freelancer.com/u/MDSilviu.html?action=hireme&track-hireme-textlink=1&track-type=textLink&ft_prog=HML&ft_prog_id=12011265) / [wordpress.org](https://profiles.wordpress.org/mdsilviu/) )
+Silviu Manolache ( [freelancer.com](https://www.freelancer.com/u/MDSilviu.html?action=hireme&track-hireme-textlink=1&track-type=textLink&ft_prog=HML&ft_prog_id=12011265) / [wordpress.org](https://profiles.wordpress.org/mdsilviu/) )
 
 ## Summary
 

@@ -37,5 +37,5 @@ get_header(); ?>
     endif; ?>
 
 <?php
-get_sidebar();
+
 get_footer();

@@ -3,7 +3,12 @@
  * File for rest api functions and filters
  *
  */
+
+/**
+ * Remove initial rest api endpoints
+ */
 remove_action('rest_api_init', 'create_initial_rest_routes', 99);
+
 /**
  * Change rest api endpoint route
  *
@@ -13,34 +18,6 @@ add_filter('rest_url_prefix', 'mds_rest_url_prefix');
 function mds_rest_url_prefix() {
 	return 'api';
 }
-
-/**
- * Disable rest api endpoints
- */
-//add_filter('rest_endpoints', function($endpoints){
-//	if (isset($endpoints['/wp/v2/users'])) {
-//		unset($endpoints['/wp/v2/users']);
-//	}
-//
-//	if (isset($endpoints['/wp/v2/users/(?P<id>[\d]+)'])) {
-//		unset($endpoints['/wp/v2/users/(?P<id>[\d]+)']);
-//	}
-//
-//	if (isset($endpoints['/wp/v2/themes'])) {
-//		unset($endpoints['/wp/v2/themes']);
-//	}
-//
-//	if (isset($endpoints['/wp/v2/settings'])) {
-//		unset($endpoints['/wp/v2/settings']);
-//	}
-//
-//	if (isset($endpoints['/wp/v2/users/me'])) {
-//		unset($endpoints['/wp/v2/users/me']);
-//	}
-//
-//
-//	return $endpoints;
-//});
 
 /**
  * Get image details

@@ -13,7 +13,7 @@ class WP_REST_Page_Controller extends WP_REST_Controller {
 	 * Register the routes for the objects of the controller.
 	 */
 	public function register_routes() {
-		$namespace = 'coc';
+		$namespace = 'mds_starter_theme';
 		$base      = 'page';
 		register_rest_route($namespace, '/' . $base . '/(?P<name>[a-zA-Z0-9-]+)', array(
 			array(

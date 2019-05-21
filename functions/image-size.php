@@ -36,9 +36,9 @@ function mds_remove_default_image_sizes($sizes) {
 add_filter( 'image_size_names_choose', 'mds_admin_custom_sizes' );
 function mds_admin_custom_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'mds-size-2560' => __( '2560px Width' ),
-        'mds-size-1920' => __( '1920 Width' ),
-        'mds-size-1280' => __( '1280 Width' ),
-        'mds-size-768' => __( '768 Width' ),
+        'mds-size-2560' => __( '2560px Width', 'mds_starter_theme' ),
+        'mds-size-1920' => __( '1920 Width', 'mds_starter_theme' ),
+        'mds-size-1280' => __( '1280 Width', 'mds_starter_theme' ),
+        'mds-size-768' => __( '768 Width', 'mds_starter_theme' ),
     ) );
 }
