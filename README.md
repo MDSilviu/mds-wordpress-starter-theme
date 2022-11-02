@@ -4,7 +4,7 @@ Version: 3.0
 
 ## Author:
 
-Silviu Manolache ( [mdsdev.eu](http://mdsdev.eu/) / [freelancer.com](https://www.freelancer.com/u/MDSilviu.html?action=hireme&track-hireme-textlink=1&track-type=textLink&ft_prog=HML&ft_prog_id=12011265) / [wordpress.org](https://profiles.wordpress.org/mdsilviu/) )
+Silviu Manolache ( [manolachesilviu.dev](https://manolachesilviu.dev) / [freelancer.com](https://www.freelancer.com/u/MDSilviu.html?action=hireme&track-hireme-textlink=1&track-type=textLink&ft_prog=HML&ft_prog_id=12011265) / [wordpress.org](https://profiles.wordpress.org/mdsilviu/) )
 
 ## Summary
 
@@ -48,7 +48,7 @@ Anyone and everyone is welcome to contribute!
 
 ### Contributors:
 
-- [mdsilviu](http://mdsdev.eu/)
+- [mdsilviu](https://manolachesilviu.dev)
 
 ### Credits
 
